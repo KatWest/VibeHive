@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36518.9 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VibeHive", "VibeHive\VibeHive.csproj", "{4AF13862-4A80-46DE-8BD0-2579B23768B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gRPCAlbumInventory", "gRPCAlbumInventory\gRPCAlbumInventory.csproj", "{0238C6B9-6522-D515-10E7-218B9E2164B1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4AF13862-4A80-46DE-8BD0-2579B23768B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AF13862-4A80-46DE-8BD0-2579B23768B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AF13862-4A80-46DE-8BD0-2579B23768B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AF13862-4A80-46DE-8BD0-2579B23768B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0238C6B9-6522-D515-10E7-218B9E2164B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0238C6B9-6522-D515-10E7-218B9E2164B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0238C6B9-6522-D515-10E7-218B9E2164B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0238C6B9-6522-D515-10E7-218B9E2164B1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0B42B63A-07D7-4814-BB9A-77B848CBE3ED}
+	EndGlobalSection
+EndGlobal

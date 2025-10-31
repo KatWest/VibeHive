@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+option csharp_namespace = "AlbumInventoryClient";
+
+package album;
+
+service AlbumService{
+	rpc AddAlbum (AlbumData) returns (AlbumModel);
+	rpc GetAlbum (AlbumId) returns (AlbumModel);
+	rpc UpdateAlbum (AlbumModel) returns (AlbumId);
+	rpc DeleteAlbum (AlbumId) returns (AlbumData);
+	rpc ListAlbums (AllAlbumsRequest) returns (AlbumsResponse);
+}
+
+message AlbumModel {
+	string Id = 1;
+	string title = 2;
+	string artist = 3;
+	string genre = 4;
+	int32 year = 5;
+	bool available = 6;
+}
+message AlbumId {
+	string Id = 1;
+}
+message AlbumData {
+	string title = 1;
+	string artist = 2;
+	string genre = 3;
+	int32 year = 4;
+	bool available = 5;
+}
+message AllAlbumsRequest {}
+message AlbumsResponse {
+	repeated AlbumModel album = 1;
+}
