@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36518.9 d17.14
+VisualStudioVersion = 17.14.36518.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VibeHive", "VibeHive\VibeHive.csproj", "{4AF13862-4A80-46DE-8BD0-2579B23768B9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gRPCAlbumInventory", "gRPCAlbumInventory\gRPCAlbumInventory.csproj", "{0238C6B9-6522-D515-10E7-218B9E2164B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicRentalAPI", "MusicRentalAPI\MusicRentalAPI.csproj", "{3A382724-2534-4FC8-B7DD-C2F320134DF4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{0238C6B9-6522-D515-10E7-218B9E2164B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0238C6B9-6522-D515-10E7-218B9E2164B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0238C6B9-6522-D515-10E7-218B9E2164B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A382724-2534-4FC8-B7DD-C2F320134DF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A382724-2534-4FC8-B7DD-C2F320134DF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A382724-2534-4FC8-B7DD-C2F320134DF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A382724-2534-4FC8-B7DD-C2F320134DF4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
