@@ -8,8 +8,8 @@ namespace MusicRentalAPI.Services.Interfaces
     {
         Music AddAlbum(Music album); //adding a new album to the collection
         IEnumerable<Music> GetAllAlbums(); //get all/List all albums 
-        bool DeleteAlbum(int id); //delete album by ID 
-        Music? GetAlbumById(int id); //get album details
+        bool DeleteAlbum(int musicId); //delete album by ID 
+        Music? GetAlbumById(int musicId); //get album details
 
 
 

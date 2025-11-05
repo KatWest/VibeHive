@@ -9,21 +9,22 @@ namespace MusicRentalAPI.Services
     //using in memory storage (list) 
     public class MusicService : IMusicService
     {
-        private readonly List<Music> _albums = new();
-       
+        private static readonly List<Music> _albums = new();
+        private static int nextAlbumId = 1; //track next album id
+
         //add album
         public Music AddAlbum(Music album)
         {
-            album.MusicId = _albums.Count + 1;
-            album.isAvailable = true;
+            album.MusicId = nextAlbumId++;
+            album.IsAvailable = true;
             _albums.Add(album);
             return album;
         }
 
         //delete album
-        public bool DeleteAlbum(int id)
+        public bool DeleteAlbum(int musicId)
         {
-            var album = _albums.FirstOrDefault(a => a.MusicId == id);
+            var album = _albums.FirstOrDefault(a => a.MusicId == musicId);
 
             //check if album exists 
             if (album != null)
@@ -44,6 +45,6 @@ namespace MusicRentalAPI.Services
         {
             return _albums;
         }
-        public Music? GetAlbumById(int id) => _albums.FirstOrDefault(a => a.MusicId == id); //album details
+        public Music? GetAlbumById(int musicId) => _albums.FirstOrDefault(a => a.MusicId == musicId); //album details
     }
 }

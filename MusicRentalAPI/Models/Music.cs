@@ -10,6 +10,6 @@ namespace MusicRentalAPI.Models
         public string Artist { get; set; }
         public string Genre { get; set; }
         public int Year { get; set; }
-        public bool isAvailable { get; set; }
+        public bool IsAvailable { get; set; }
     }
 }

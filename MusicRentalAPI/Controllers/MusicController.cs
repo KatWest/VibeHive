@@ -47,7 +47,7 @@ namespace MusicRentalAPI.Controllers
             var addedAlbum = _musicService.AddAlbum(album);
 
             // Return 200 success response
-            return Ok($"{addedAlbum} has been added successfully :)");
+            return Ok($"{addedAlbum.Title} has been added successfully :)");
         }
 
         //get all albums

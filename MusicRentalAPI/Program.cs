@@ -10,6 +10,7 @@ builder.Services.AddControllers();
 //DI setup
 builder.Services.AddSingleton<IMusicService, MusicService>();
 builder.Services.AddSingleton<IRentalService, RentalService>();
+builder.Services.AddSingleton<ICustomerService, CustomerService>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

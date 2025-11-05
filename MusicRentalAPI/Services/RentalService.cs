@@ -8,35 +8,60 @@ namespace MusicRentalAPI.Services
     public class RentalService : IRentalService
     {
         private readonly IMusicService _musicService;
+        private readonly ICustomerService _customerService;
         private readonly List<Rental> _rentals = new();
+        private static int nextRentalId = 1;
 
-        // Dependency Injection: RentalService depends on IMusicService interface, not the MusicService specifically
-        public RentalService(IMusicService musicService)
+        // cpnstructor using ependency Injection: RentalService depends on IMusicService interface, not the MusicService specifically, customer service for custoemr data
+        public RentalService(IMusicService musicService, ICustomerService customerService)
         {
             _musicService = musicService;
+            _customerService = customerService;
+            
         }
 
-        //rent album 
-        public Rental RentAlbum(int customerId, int musicAlbumId)
+        //rent album to specific customer
+        public Rental RentAlbum(int customerId, int musicId)
         {
-            var album = _musicService.GetAlbumById(musicAlbumId);
-
-            //check if album is not available 
-            if (album == null || !album.isAvailable)
+            try
             {
-                throw new InvalidOperationException("Album is not available for rent :(");
+                //Validate that customer exists
+                var customer = _customerService.GetById(customerId);
+                if (customer == null)
+                    throw new Exception("Customer was not found.");
+
+                //Validate that the album exists
+                var album = _musicService.GetAlbumById(musicId);
+                if (album == null)
+                    throw new Exception("Album was not found.");
+
+                //Check if the album is available to rent
+                if (!album.IsAvailable)
+                    throw new Exception("Album is not available to rent.");
+
+                //Mark the album as rented
+                album.IsAvailable = false;
+
+                //Create a new rental record
+                var rental = new Rental
+                {
+                    RentalId = nextRentalId++,
+                    CustomerId = customerId,
+                    MusicId = musicId,
+                    RentalReturn = DateTime.Now
+                };
+
+                //Add rental to list
+                _rentals.Add(rental);
+
+                //Return the rental record
+                return rental;
             }
-            album.isAvailable = false;
-            var rental = new Rental 
+            catch (Exception ex)
             {
-                RentalId = _rentals.Count + 1,
-                CustomerId = customerId,
-                MusicAlbumId = musicAlbumId,
-                RentalDate = DateTime.Now
-            };
-
-            _rentals.Add(rental);
-            return rental;
+                //error
+                throw new Exception($"Unable to rent album: {ex.Message}");
+            }
 
 
         }
@@ -49,8 +74,8 @@ namespace MusicRentalAPI.Services
             if (rental == null || rental.RentalReturn != null)
                 return false;
 
-            var album = _musicService.GetAlbumById(rental.MusicAlbumId);
-            if (album != null) album.isAvailable = true;
+            var album = _musicService.GetAlbumById(rental.MusicId);
+            if (album != null) album.IsAvailable = true;
 
             rental.RentalReturn = DateTime.Now;
             return true;

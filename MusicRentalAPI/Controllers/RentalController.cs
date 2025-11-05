@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MusicRentalAPI.Models;
 using MusicRentalAPI.Services.Interfaces;
 
 namespace MusicRentalAPI.Controllers
@@ -10,6 +11,7 @@ namespace MusicRentalAPI.Controllers
     public class RentalController : Controller
     {
         private readonly IRentalService _rentalService;
+
         public RentalController(IRentalService rentalService)
         {
             _rentalService = rentalService;
@@ -17,16 +19,15 @@ namespace MusicRentalAPI.Controllers
 
         //rent a music album
         [HttpPost]
-        public IActionResult RentAlbum(int customerId, int musicAlbumId)
+        public IActionResult RentAlbum(int customerId, int musicId)
         {
             try
             {
                 //Call the rental service to rent the album
-                var rentedAlbum = _rentalService.RentAlbum(customerId, musicAlbumId);
+                var rentedAlbum = _rentalService.RentAlbum(customerId, musicId);
 
                 //Return success message if rental was successful
-                string message = $"{rentedAlbum} has been rented successfully.";
-                return Ok(message);
+                return Ok($"(Rental ID: {rentedAlbum.RentalId}) Music ID: {musicId} has been rented successfully by CustomerID: {customerId}.");
             }
             catch (Exception ex)
             {
