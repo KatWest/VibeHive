@@ -36,6 +36,8 @@
             flowLayoutPanel1 = new FlowLayoutPanel();
             tabControl_Customers = new TabControl();
             tabPage_Customers = new TabPage();
+            label10 = new Label();
+            label9 = new Label();
             btn_GetAllCustomers = new Button();
             listBox_Customers = new ListBox();
             btn_AddCustomer = new Button();
@@ -44,6 +46,10 @@
             label2 = new Label();
             label1 = new Label();
             tabPage_MusicLibrary = new TabPage();
+            label7 = new Label();
+            label6 = new Label();
+            label5 = new Label();
+            label4 = new Label();
             label3 = new Label();
             listBox_MusicAlbums = new ListBox();
             txb_AlbumYear = new TextBox();
@@ -51,18 +57,13 @@
             txb_AlbumArtist = new TextBox();
             txb_AlbumTitle = new TextBox();
             tabPage_Rentals = new TabPage();
+            label8 = new Label();
             txb_RentalIdToReturn = new TextBox();
             cmb_MusicAlbums = new ComboBox();
             cmb_Customers = new ComboBox();
             listBox_AllActiveRentals = new ListBox();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            label4 = new Label();
-            label5 = new Label();
-            label6 = new Label();
-            label7 = new Label();
-            label8 = new Label();
-            label9 = new Label();
-            label10 = new Label();
+            label11 = new Label();
             tabControl_Customers.SuspendLayout();
             tabPage_Customers.SuspendLayout();
             tabPage_MusicLibrary.SuspendLayout();
@@ -156,6 +157,24 @@
             tabPage_Customers.Text = "1. View Customers";
             tabPage_Customers.UseVisualStyleBackColor = true;
             // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(292, 61);
+            label10.Name = "label10";
+            label10.Size = new Size(120, 20);
+            label10.TabIndex = 5;
+            label10.Text = "Customer Email: ";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(4, 61);
+            label9.Name = "label9";
+            label9.Size = new Size(123, 20);
+            label9.TabIndex = 5;
+            label9.Text = "Customer Name: ";
+            // 
             // btn_GetAllCustomers
             // 
             btn_GetAllCustomers.Location = new Point(278, 297);
@@ -237,14 +256,50 @@
             tabPage_MusicLibrary.Text = "2. View Music Library";
             tabPage_MusicLibrary.UseVisualStyleBackColor = true;
             // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(443, 59);
+            label7.Name = "label7";
+            label7.Size = new Size(76, 20);
+            label7.TabIndex = 5;
+            label7.Text = "Add Year: ";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(324, 59);
+            label6.Name = "label6";
+            label6.Size = new Size(87, 20);
+            label6.TabIndex = 5;
+            label6.Text = "Add Genre: ";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(216, 59);
+            label5.Name = "label5";
+            label5.Size = new Size(79, 20);
+            label5.TabIndex = 5;
+            label5.Text = "Add Artist:";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(49, 59);
+            label4.Name = "label4";
+            label4.Size = new Size(121, 20);
+            label4.TabIndex = 5;
+            label4.Text = "Add Album Title:";
+            // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Location = new Point(19, 18);
             label3.Name = "label3";
-            label3.Size = new Size(176, 20);
+            label3.Size = new Size(258, 20);
             label3.TabIndex = 4;
-            label3.Text = "Step 2: Add Music Album";
+            label3.Text = "Step 2: Add Music Album Information";
             // 
             // listBox_MusicAlbums
             // 
@@ -284,6 +339,7 @@
             // 
             // tabPage_Rentals
             // 
+            tabPage_Rentals.Controls.Add(label11);
             tabPage_Rentals.Controls.Add(label8);
             tabPage_Rentals.Controls.Add(txb_RentalIdToReturn);
             tabPage_Rentals.Controls.Add(cmb_MusicAlbums);
@@ -299,6 +355,15 @@
             tabPage_Rentals.TabIndex = 2;
             tabPage_Rentals.Text = "3. View Rentals";
             tabPage_Rentals.UseVisualStyleBackColor = true;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(43, 96);
+            label8.Name = "label8";
+            label8.Size = new Size(292, 20);
+            label8.TabIndex = 5;
+            label8.Text = "Enter Rental ID to Return Music Album -->:";
             // 
             // txb_RentalIdToReturn
             // 
@@ -333,68 +398,14 @@
             listBox_AllActiveRentals.Size = new Size(654, 144);
             listBox_AllActiveRentals.TabIndex = 2;
             // 
-            // label4
+            // label11
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(49, 59);
-            label4.Name = "label4";
-            label4.Size = new Size(121, 20);
-            label4.TabIndex = 5;
-            label4.Text = "Add Album Title:";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(216, 59);
-            label5.Name = "label5";
-            label5.Size = new Size(79, 20);
-            label5.TabIndex = 5;
-            label5.Text = "Add Artist:";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(324, 59);
-            label6.Name = "label6";
-            label6.Size = new Size(87, 20);
-            label6.TabIndex = 5;
-            label6.Text = "Add Genre: ";
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Location = new Point(443, 59);
-            label7.Name = "label7";
-            label7.Size = new Size(76, 20);
-            label7.TabIndex = 5;
-            label7.Text = "Add Year: ";
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Location = new Point(43, 96);
-            label8.Name = "label8";
-            label8.Size = new Size(292, 20);
-            label8.TabIndex = 5;
-            label8.Text = "Enter Rental ID to Return Music Album -->:";
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Location = new Point(4, 61);
-            label9.Name = "label9";
-            label9.Size = new Size(123, 20);
-            label9.TabIndex = 5;
-            label9.Text = "Customer Name: ";
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Location = new Point(292, 61);
-            label10.Name = "label10";
-            label10.Size = new Size(120, 20);
-            label10.TabIndex = 5;
-            label10.Text = "Customer Email: ";
+            label11.AutoSize = true;
+            label11.Location = new Point(15, 16);
+            label11.Name = "label11";
+            label11.Size = new Size(190, 20);
+            label11.TabIndex = 6;
+            label11.Text = "Step 3: Rent a Music Album";
             // 
             // MusicRentalForm
             // 
@@ -453,5 +464,6 @@
         private Label label6;
         private Label label8;
         private Label label10;
+        private Label label11;
     }
 }
