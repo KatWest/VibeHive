@@ -6,5 +6,11 @@ namespace VibeHive
         {
             InitializeComponent();
         }
+
+        private void albumManageBtn_Click(object sender, EventArgs e)
+        {
+            AlbumInventory albumInventory = new AlbumInventory();
+            albumInventory.Show();
+        }
     }
 }

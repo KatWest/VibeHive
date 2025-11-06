@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             inputPanel = new Panel();
+            clearBtn = new Button();
             yearNud = new NumericUpDown();
             label5 = new Label();
             label4 = new Label();
@@ -43,6 +44,7 @@
             dataPanel = new Panel();
             albumsDgv = new DataGridView();
             panel1 = new Panel();
+            btnRefresh = new Button();
             label1 = new Label();
             inputPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)yearNud).BeginInit();
@@ -53,6 +55,7 @@
             // 
             // inputPanel
             // 
+            inputPanel.Controls.Add(clearBtn);
             inputPanel.Controls.Add(yearNud);
             inputPanel.Controls.Add(label5);
             inputPanel.Controls.Add(label4);
@@ -67,8 +70,18 @@
             inputPanel.Dock = DockStyle.Left;
             inputPanel.Location = new Point(0, 0);
             inputPanel.Name = "inputPanel";
-            inputPanel.Size = new Size(476, 582);
+            inputPanel.Size = new Size(476, 581);
             inputPanel.TabIndex = 0;
+            // 
+            // clearBtn
+            // 
+            clearBtn.Location = new Point(266, 41);
+            clearBtn.Name = "clearBtn";
+            clearBtn.Size = new Size(75, 23);
+            clearBtn.TabIndex = 8;
+            clearBtn.Text = "Clear";
+            clearBtn.UseVisualStyleBackColor = true;
+            clearBtn.Click += clearBtn_Click;
             // 
             // yearNud
             // 
@@ -152,6 +165,7 @@
             deleteBtn.TabIndex = 7;
             deleteBtn.Text = "Remove";
             deleteBtn.UseVisualStyleBackColor = true;
+            deleteBtn.Click += deleteBtn_Click;
             // 
             // updateBtn
             // 
@@ -162,6 +176,7 @@
             updateBtn.TabIndex = 6;
             updateBtn.Text = "Update";
             updateBtn.UseVisualStyleBackColor = true;
+            updateBtn.Click += updateBtn_Click;
             // 
             // addBtn
             // 
@@ -181,7 +196,7 @@
             dataPanel.Dock = DockStyle.Fill;
             dataPanel.Location = new Point(476, 0);
             dataPanel.Name = "dataPanel";
-            dataPanel.Size = new Size(454, 582);
+            dataPanel.Size = new Size(453, 581);
             dataPanel.TabIndex = 1;
             // 
             // albumsDgv
@@ -193,17 +208,29 @@
             albumsDgv.Location = new Point(0, 70);
             albumsDgv.Name = "albumsDgv";
             albumsDgv.ReadOnly = true;
-            albumsDgv.Size = new Size(454, 512);
+            albumsDgv.Size = new Size(453, 511);
             albumsDgv.TabIndex = 0;
+            albumsDgv.CellMouseDoubleClick += albumsDgv_CellMouseDoubleClick;
             // 
             // panel1
             // 
+            panel1.Controls.Add(btnRefresh);
             panel1.Controls.Add(label1);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(454, 70);
+            panel1.Size = new Size(453, 70);
             panel1.TabIndex = 2;
+            // 
+            // btnRefresh
+            // 
+            btnRefresh.Location = new Point(367, 41);
+            btnRefresh.Name = "btnRefresh";
+            btnRefresh.Size = new Size(75, 23);
+            btnRefresh.TabIndex = 9;
+            btnRefresh.Text = "Refresh";
+            btnRefresh.UseVisualStyleBackColor = true;
+            btnRefresh.Click += btnRefresh_Click;
             // 
             // label1
             // 
@@ -221,9 +248,10 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(930, 582);
+            ClientSize = new Size(929, 581);
             Controls.Add(dataPanel);
             Controls.Add(inputPanel);
+            MinimumSize = new Size(945, 620);
             Name = "AlbumInventory";
             Text = "VibeHive - Album Inventory";
             Load += AlbumInventory_Load;
@@ -255,5 +283,7 @@
         private Button updateBtn;
         private Button addBtn;
         private NumericUpDown yearNud;
+        private Button btnRefresh;
+        private Button clearBtn;
     }
 }
