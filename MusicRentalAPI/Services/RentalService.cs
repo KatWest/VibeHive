@@ -48,7 +48,8 @@ namespace MusicRentalAPI.Services
                     RentalId = nextRentalId++,
                     CustomerId = customerId,
                     MusicId = musicId,
-                    RentalReturn = DateTime.Now
+                    RentalDate = DateTime.Now,
+                    RentalReturn = null
                 };
 
                 //Add rental to list
