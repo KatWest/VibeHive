@@ -6,7 +6,15 @@ using System.Threading.Tasks;
 
 namespace PlaylistBuilderOOP
 {
-    internal class User
+    public class User
     {
+        public string Id { get; set; } = Guid.NewGuid().ToString();
+        public string Name { get; set; }
+
+        public User(string id, string name)
+        {
+            Id = id;
+            Name = name;
+        }
     }
 }
