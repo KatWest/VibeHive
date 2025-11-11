@@ -31,15 +31,24 @@ namespace PlaylistBuilderOOP
             IsCollaborative = isCollaborative;
         }
 
-        public void AddSong(Song newSong)
+        internal static Playlist GetPlaylist(string playlistId)
         {
-            if (!_songs.Any(song => song.Id == newSong.Id))
+            AllPlaylists.TryGetValue(playlistId, out var playlist);
+            return playlist;
+        }
+
+        public void AddSongToPlaylist(string songId)
+        {
+            //check if song instance exists
+            if (!_songs.Any(song => song.Id == songId))
             {
+                //get song and add
+                var newSong = GetSong(songId);
                 _songs.Add(newSong);
             }
         }
 
-        public void RemoveSong(string songId)
+        public void RemoveSongToPlaylist(string songId)
         {
             _songs.RemoveAll(song => song.Id == songId);
         }
@@ -49,12 +58,24 @@ namespace PlaylistBuilderOOP
         {
             if(IsCollaborative == false)
             {
-                return
-                    //error needed
+                return;
             }
 
-            if()
+            if(CreatedBy != userId)
+            {
+                return;
+            }
+            approvedCollaborators.Add(collabId);
         }
+
+        //helper
+        public Song GetSong(string songId)
+        {
+            var song = _songs.FirstOrDefault(s => s.Id == songId);
+
+            return song;
+        }
+
 
 
 
