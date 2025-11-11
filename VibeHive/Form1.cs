@@ -12,5 +12,17 @@ namespace VibeHive
             AlbumInventory albumInventory = new AlbumInventory();
             albumInventory.Show();
         }
+
+        private void musicRentalBtn_Click(object sender, EventArgs e)
+        {
+            MusicRentalForm musicRental = new MusicRentalForm();
+            musicRental.Show();
+        }
+
+        private void playlistBuilderBtn_Click(object sender, EventArgs e)
+        {
+            //PlaylistBuilderForm playlistBuilder = new PlaylistBuilderForm();
+            //playlistBuilder.Show();
+        }
     }
 }
