@@ -9,15 +9,23 @@ namespace PlaylistBuilderOOP
 {
     public class Playlist : MediaItem
     {
+        //public list of all playlists
+        internal static Dictionary<string, Playlist> AllPlaylists = new Dictionary<string, Playlist>();
+
+        //instance of songs in playlist
         private readonly List<Song> _songs = new List<Song>();
+
+        //userIds of approved collaborators
+        private List<string> approvedCollaborators = new List<string>(); 
 
         [JsonPropertyName("Name")]
         public string Name => DisplayName; //allows for inheritance from mediaItem but also keep json as request field name
         public bool IsCollaborative { get; private set; }
-        public int CreatedBy { get; private set; } //userID
+        public string CreatedBy { get; private set; } //userID
         public IReadOnlyList<Song> Songs => _songs.AsReadOnly();
+        public IReadOnlyList<string> ApprovedCollaborators => approvedCollaborators.AsReadOnly();
 
-        public Playlist(string id, string name, int createdBy, bool isCollaborative) : base(id, name)
+        public Playlist(string id, string name, string createdBy, bool isCollaborative) : base(id, name)
         {
             CreatedBy = createdBy;
             IsCollaborative = isCollaborative;
@@ -36,6 +44,19 @@ namespace PlaylistBuilderOOP
             _songs.RemoveAll(song => song.Id == songId);
         }
         
+        
+        public void AddCollabUser(string userId, string collabId)
+        {
+            if(IsCollaborative == false)
+            {
+                return
+                    //error needed
+            }
+
+            if()
+        }
+
+
 
     }
 }
