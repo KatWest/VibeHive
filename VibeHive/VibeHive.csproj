@@ -15,10 +15,11 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
   </ItemGroup>
 	
   <ItemGroup>
-    <Protobuf Include="Protos\album_service.proto" GrpcServices="Client"/>
+    <Protobuf Include="Protos\album_service.proto" GrpcServices="Client" />
   </ItemGroup>
 
 </Project>
