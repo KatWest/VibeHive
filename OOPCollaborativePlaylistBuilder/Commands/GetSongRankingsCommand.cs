@@ -15,9 +15,10 @@ namespace PlaylistBuilderOOP.Commands
             _playlist = Playlist.GetPlaylist(playlistId);
         }
 
-        public void Execute()
+        public List<Song> Execute()
         {
-            _playlist.GetSongRankings();
+            List<Song> rankedSongList = _playlist.GetSongRankings();
+            return rankedSongList;
         }
     }
 }

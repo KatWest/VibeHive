@@ -17,7 +17,7 @@ namespace OOPCollaborativePlaylistBuilder.Controllers
 
             Playlist newPlaylist = createPlaylist.NewPlaylist;
 
-            if(newPlaylist == null)
+            if (newPlaylist == null)
             {
                 throw new Exception(message: "Your new playlist could not be created.");
             }
@@ -33,7 +33,7 @@ namespace OOPCollaborativePlaylistBuilder.Controllers
 
             Song updatedSong = songVote.UpdatedSong;
 
-            if(updatedSong == null)
+            if (updatedSong == null)
             {
                 throw new Exception(message: $"The playlist with Id: {playlistId} could not update the song with Id: {songId}");
             }
@@ -52,14 +52,25 @@ namespace OOPCollaborativePlaylistBuilder.Controllers
             {
                 throw new Exception(message: $"There are no playlists.");
             }
-
             return allPlaylists;
         }
 
-
         //GET /api/playlists/{ id}/rankings: Get ranked list of songs based on votes.
+        [HttpGet("{playlistId}/rankings")]
+        public ActionResult<List<Song>> GetRankedSongsListByPlaylist(string playlistId)
+        {
+            var rankedSongList = new GetSongRankingsCommand(playlistId);
+            List<Song> songListRanked = rankedSongList.Execute();
+
+            if (songListRanked == null)
+            {
+                throw new Exception(message: $"Was not able to find songs rankings for playlist Id: {playlistId}");
+            }
+            return songListRanked;
+        }
 
         //PUT /api/playlists/{ id}/add: Add a song to a specific playlist.
+
 
         //PUT /api/playlists/{id}/invite: Invite other users to collaborate on a playlist.
 
