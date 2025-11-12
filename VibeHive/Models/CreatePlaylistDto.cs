@@ -9,7 +9,7 @@ namespace VibeHive.Models
     public class CreatePlaylistDto
     {
         public string Name { get; set; }
-        public bool isCollaborative { get; set; }
+        public bool IsCollaborative { get; set; }
         public string CreatedBy { get; set; }
     }
 }

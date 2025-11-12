@@ -5,23 +5,43 @@ using PlaylistBuilderOOP.Models;
 namespace OOPCollaborativePlaylistBuilder.Controllers
 {
     [ApiController]
-    [Route("api/[controller")]
+    [Route("api/[controller]")]
     public class PlaylistController : Controller
     {
         //POST /api/playlists: Create a new playlist.
         [HttpPost]
         public ActionResult<Playlist> CreatePlaylist([FromBody] Playlist playlist)
         {
-            var createPlaylist = new CreatePlaylistCommand(playlist.Name, playlist.CreatedBy, playlist.IsCollaborative);
-            createPlaylist.Execute();
-
-            Playlist newPlaylist = createPlaylist.NewPlaylist;
-
-            if (newPlaylist == null)
+            if (string.IsNullOrWhiteSpace(playlist.Name))
             {
-                throw new Exception(message: "Your new playlist could not be created.");
+                return BadRequest("Playlist Name is required");
             }
-            return newPlaylist;
+
+            if(string.IsNullOrWhiteSpace(playlist.CreatedBy))
+            {
+                return BadRequest("CreatedBy is Required");
+            }
+
+            //
+            var userExists = await _db.User._anyAsync(c => c.CreatedBy == playlist.CreatedBy);
+            if(userExists == null)
+            {
+                return NotFound("User doesn't exist.");
+            }
+
+            try
+            {
+                var createPlaylist = new CreatePlaylistCommand(playlist.Name, playlist.CreatedBy, playlist.IsCollaborative);
+                createPlaylist.Execute();
+
+                Playlist newPlaylist = createPlaylist.NewPlaylist;
+
+                return Ok(newPlaylist);
+            }
+            catch (Exception ex)
+            {
+                return Problem(title: "Unexpected error", detail: ex.Message, statusCode: 500);
+            }
         }
 
         //POST /api/playlists/{id}/vote: Vote on a song within a collaborative playlist.
@@ -37,7 +57,7 @@ namespace OOPCollaborativePlaylistBuilder.Controllers
             {
                 throw new Exception(message: $"The playlist with Id: {playlistId} could not update the song with Id: {songId}");
             }
-            return updatedSong;
+            return Ok(updatedSong);
         }
 
         //GET /api/playlists: List all playlists created by users.
@@ -52,7 +72,7 @@ namespace OOPCollaborativePlaylistBuilder.Controllers
             {
                 throw new Exception(message: $"There are no playlists.");
             }
-            return allPlaylists;
+            return Ok(allPlaylists);
         }
 
         //GET /api/playlists/{ id}/rankings: Get ranked list of songs based on votes.
@@ -66,7 +86,7 @@ namespace OOPCollaborativePlaylistBuilder.Controllers
             {
                 throw new Exception(message: $"Was not able to find songs rankings for playlist Id: {playlistId}");
             }
-            return songListRanked;
+            return Ok(songListRanked);
         }
 
         //PUT /api/playlists/{ id}/add: Add a song to a specific playlist.
@@ -82,7 +102,7 @@ namespace OOPCollaborativePlaylistBuilder.Controllers
             {
                 throw new Exception(message: $"Adding the song with Id: {song.Id} to playlist Id: {playlistId} failed.");
             }
-            return updatedPlaylistSongs;
+            return Ok(updatedPlaylistSongs);
         }
 
         //PUT /api/playlists/{id}/invite: Invite other users to collaborate on a playlist.
@@ -98,7 +118,7 @@ namespace OOPCollaborativePlaylistBuilder.Controllers
             {
                 throw new Exception(message: $"Unable to add user with Id: {collabUserId} as collaborator on playlist id:{playlistId}");
             }
-            return newPlaylistCollabUserIds;
+            return Ok(newPlaylistCollabUserIds);
         }
     }
 }

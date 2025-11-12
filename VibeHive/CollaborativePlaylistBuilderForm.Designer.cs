@@ -1,6 +1,6 @@
 ﻿namespace VibeHive
 {
-    partial class CollaborativePlaylistBuilder
+    partial class CollaborativePlaylistBuilderForm
     {
         /// <summary>
         /// Required designer variable.

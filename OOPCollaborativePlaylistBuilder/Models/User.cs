@@ -9,8 +9,20 @@ namespace PlaylistBuilderOOP
 {
     public class User
     {
-        private static List<User> users = new List<User>();
-        internal static List<User> UsersList => users;
+        private static List<User> users = new List<User>
+        {
+            new User("Alice"),
+            new User("Bob"),
+            new User ("Charlie"),
+            new User ("Diana"),
+            new User ("Ethan"),
+            new User ("Fiona"),
+            new User ("George"),
+            new User ("Hannah"),
+            new User ("Isaac"),
+            new User ("Julia")
+        };
+        public static List<User> UsersList => users;
 
         public string Id { get; set; } 
         public string Name { get; set; }
