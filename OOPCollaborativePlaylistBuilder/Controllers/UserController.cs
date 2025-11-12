@@ -5,7 +5,7 @@ using PlaylistBuilderOOP.Commands;
 namespace OOPCollaborativePlaylistBuilder.Controllers
 {
     [ApiController]
-    [Route("api/[controller")]
+    [Route("api/[controller]")]
     public class UserController : Controller
     {
         [HttpGet]
@@ -19,7 +19,7 @@ namespace OOPCollaborativePlaylistBuilder.Controllers
                 throw new Exception(message: "There was an error getting a list of all users.");
             }
 
-            return userList;
+            return Ok(userList);
         }
     }
 }
