@@ -9,11 +9,13 @@ namespace PlaylistBuilderOOP.Commands
 {
     internal class GetUsersCommand
     {
+        public List<User> userList;
         public GetUsersCommand() { }        
 
-        public void Execute()
+        public List<User> Execute()
         {
-            List<User> users = User.GetAllUsers();
+            userList = User.GetAllUsers();
+            return userList;
         }
     }
 }

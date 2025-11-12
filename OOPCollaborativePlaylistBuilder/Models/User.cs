@@ -12,12 +12,12 @@ namespace PlaylistBuilderOOP
         private static List<User> users = new List<User>();
         internal static List<User> UsersList => users;
 
-        public string Id { get; set; } = Guid.NewGuid().ToString();
+        public string Id { get; set; } 
         public string Name { get; set; }
 
-        public User(string id, string name)
+        public User( string name)
         {
-            Id = id;
+            Id = Guid.NewGuid().ToString();
             Name = name;
         }
 

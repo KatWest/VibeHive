@@ -18,7 +18,7 @@ namespace PlaylistBuilderOOP.Models
         public TimeSpan Duration { get; set; }
         public int Votes => _votes;
 
-        public Song(string title, string artist, string genre, TimeSpan duration, int UpVotes, int DownVotes, string id, DateTime updatedAt) : base(id, title)
+        public Song(string title, string artist, string genre, TimeSpan duration, int UpVotes, int DownVotes, string id, DateTime updatedAt) : base(title)
         {
             Artist = artist;
             Genre = genre;
