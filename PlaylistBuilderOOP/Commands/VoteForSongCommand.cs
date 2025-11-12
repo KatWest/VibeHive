@@ -11,14 +11,10 @@ namespace PlaylistBuilderOOP.Commands
         private Playlist _playlist;
         private Song _song;
 
-        private string _songId;
-        private string _playlistId;
         private bool _vote;
 
         public VoteForSongCommand(string songId, string playlistId, bool vote)
         {
-            _songId = songId;
-            _playlistId = playlistId;
             _vote = vote;
 
             //find playlist 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,7 +9,8 @@ namespace PlaylistBuilderOOP
 {
     public class User
     {
-        public static List<User> Users { get; set; }
+        private static List<User> users = new List<User>();
+        internal static List<User> UsersList => users;
 
         public string Id { get; set; } = Guid.NewGuid().ToString();
         public string Name { get; set; }
@@ -17,6 +19,15 @@ namespace PlaylistBuilderOOP
         {
             Id = id;
             Name = name;
+        }
+
+        public static List<User> GetAllUsers()
+        {
+            if(UsersList == null)
+            {
+                return null;
+            }
+            return UsersList;
         }
     }
 }

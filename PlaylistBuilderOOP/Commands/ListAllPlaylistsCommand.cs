@@ -6,9 +6,14 @@ using System.Threading.Tasks;
 
 namespace PlaylistBuilderOOP.Commands
 {
-    internal class CreatePlaylist: Command
+    internal class ListAllPlaylistsCommand
     {
+        ListAllPlaylistsCommand() { }
 
+        public void Execute() 
+        {
+            Playlist.GetAllPlaylists();
+        }
 
 
     }

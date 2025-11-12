@@ -8,18 +8,19 @@ namespace PlaylistBuilderOOP.Commands
 {
     internal class AddSongtoPlaylistCommand : Command
     {
-        private readonly Song Song;
-        private readonly string PlaylistId;
+        private readonly Song _Song;
+        private readonly Playlist _Playlist;
 
         public AddSongtoPlaylistCommand(Song song, string playlistId)
         {
-            Song = song;
-            PlaylistId = playlistId;
+            _Song = song;
+
+            _Playlist = Playlist.GetPlaylist(playlistId);
         }
 
         public void Execute()
         {
-
+            _Playlist.AddSongToPlaylist(_Song.Id);
         }
     }
 }
