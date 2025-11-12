@@ -28,6 +28,8 @@ namespace VibeHive
 
         private async void button_createPlaylist_Click(object sender, EventArgs e)
         {
+            //ToDo: fix playlist 404 error (swagger) and fix 500 connection error
+
             //check which collab option chosen
             bool _isCollab = false; //default of false
             if(radioButton_false_isCollaborative.Checked) 
@@ -50,6 +52,7 @@ namespace VibeHive
             var json = JsonConvert.SerializeObject(newPlaylist);
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
+            //*****error happening here
             HttpResponseMessage message = await _httpClient.PostAsync($"{apiBaseUrl}/playlist", content);
 
             if (message.IsSuccessStatusCode)

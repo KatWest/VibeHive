@@ -8,6 +8,8 @@ namespace OOPCollaborativePlaylistBuilder.Controllers
     [Route("api/[controller]")]
     public class PlaylistController : Controller
     {
+        //ToDo: fix created by check - currently getting 404 error
+
         //POST /api/playlists: Create a new playlist.
         [HttpPost]
         public ActionResult<Playlist> CreatePlaylist([FromBody] Playlist playlist)
