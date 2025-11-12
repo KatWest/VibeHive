@@ -66,8 +66,10 @@
             label19 = new Label();
             label21 = new Label();
             textBox_playlistId_songVote = new TextBox();
-            button_UpVote = new Button();
-            button_downVote = new Button();
+            button_Vote = new Button();
+            radioButton_downVote = new RadioButton();
+            label16 = new Label();
+            radioButton_Up = new RadioButton();
             SuspendLayout();
             // 
             // listBox_Playlists
@@ -207,6 +209,7 @@
             button_AddCollaborator.TabIndex = 15;
             button_AddCollaborator.Text = "Add Collaborator";
             button_AddCollaborator.UseVisualStyleBackColor = true;
+            button_AddCollaborator.Click += button_AddCollaborator_Click;
             // 
             // label4
             // 
@@ -278,6 +281,7 @@
             button_addSong.TabIndex = 22;
             button_addSong.Text = "Add Song";
             button_addSong.UseVisualStyleBackColor = true;
+            button_addSong.Click += button_addSong_Click;
             // 
             // label11
             // 
@@ -385,36 +389,61 @@
             textBox_playlistId_songVote.Size = new Size(125, 27);
             textBox_playlistId_songVote.TabIndex = 37;
             // 
-            // button_UpVote
+            // button_Vote
             // 
-            button_UpVote.Location = new Point(795, 672);
-            button_UpVote.Name = "button_UpVote";
-            button_UpVote.Size = new Size(146, 29);
-            button_UpVote.TabIndex = 36;
-            button_UpVote.Text = "Up Vote";
-            button_UpVote.UseVisualStyleBackColor = true;
+            button_Vote.Location = new Point(808, 728);
+            button_Vote.Name = "button_Vote";
+            button_Vote.Size = new Size(146, 29);
+            button_Vote.TabIndex = 50;
+            button_Vote.Text = "Vote";
+            button_Vote.UseVisualStyleBackColor = true;
+            button_Vote.Click += button_Vote_Click;
             // 
-            // button_downVote
+            // radioButton_downVote
             // 
-            button_downVote.Location = new Point(795, 707);
-            button_downVote.Name = "button_downVote";
-            button_downVote.Size = new Size(146, 29);
-            button_downVote.TabIndex = 50;
-            button_downVote.Text = "Down Vote";
-            button_downVote.UseVisualStyleBackColor = true;
+            radioButton_downVote.AutoSize = true;
+            radioButton_downVote.Location = new Point(897, 673);
+            radioButton_downVote.Name = "radioButton_downVote";
+            radioButton_downVote.Size = new Size(99, 24);
+            radioButton_downVote.TabIndex = 53;
+            radioButton_downVote.TabStop = true;
+            radioButton_downVote.Text = "DownVote";
+            radioButton_downVote.UseVisualStyleBackColor = true;
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Location = new Point(808, 650);
+            label16.Name = "label16";
+            label16.Size = new Size(39, 20);
+            label16.TabIndex = 52;
+            label16.Text = "Vote";
+            // 
+            // radioButton_Up
+            // 
+            radioButton_Up.AutoSize = true;
+            radioButton_Up.Location = new Point(808, 673);
+            radioButton_Up.Name = "radioButton_Up";
+            radioButton_Up.Size = new Size(83, 24);
+            radioButton_Up.TabIndex = 51;
+            radioButton_Up.TabStop = true;
+            radioButton_Up.Text = "Up Vote";
+            radioButton_Up.UseVisualStyleBackColor = true;
             // 
             // CollaborativePlaylistBuilderForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1144, 822);
-            Controls.Add(button_downVote);
+            Controls.Add(radioButton_downVote);
+            Controls.Add(label16);
+            Controls.Add(radioButton_Up);
+            Controls.Add(button_Vote);
             Controls.Add(label15);
             Controls.Add(textBox_songId_songVote);
             Controls.Add(label19);
             Controls.Add(label21);
             Controls.Add(textBox_playlistId_songVote);
-            Controls.Add(button_UpVote);
             Controls.Add(label14);
             Controls.Add(textBox_songId_AddSong);
             Controls.Add(label12);
@@ -495,6 +524,9 @@
         private Label label21;
         private TextBox textBox_playlistId_songVote;
         private Button button_UpVote;
-        private Button button_downVote;
+        private Button button_Vote;
+        private RadioButton radioButton_downVote;
+        private Label label16;
+        private RadioButton radioButton_Up;
     }
 }

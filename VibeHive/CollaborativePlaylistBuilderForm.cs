@@ -32,7 +32,7 @@ namespace VibeHive
 
             //check which collab option chosen
             bool _isCollab = false; //default of false
-            if(radioButton_false_isCollaborative.Checked) 
+            if (radioButton_false_isCollaborative.Checked)
             {
                 _isCollab = false;
             }
@@ -118,5 +118,21 @@ namespace VibeHive
             }
         }
 
+        private void button_AddCollaborator_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button_addSong_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button_Vote_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //ToDo:Add playlist search
     }
 }
