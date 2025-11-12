@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace PlaylistBuilderOOP
+namespace PlaylistBuilderOOP.Models
 {
     public class Song : MediaItem
     {
@@ -16,7 +16,7 @@ namespace PlaylistBuilderOOP
         public string Artist { get; set; }
         public string Genre { get; set; }
         public TimeSpan Duration { get; set; }
-        public int Votes => _votes; 
+        public int Votes => _votes;
 
         public Song(string title, string artist, string genre, TimeSpan duration, int UpVotes, int DownVotes, string id, DateTime updatedAt) : base(id, title)
         {
@@ -32,8 +32,8 @@ namespace PlaylistBuilderOOP
         }
 
         public void DownVotes()
-        { 
-            _votes--; 
+        {
+            _votes--;
         }
 
     }

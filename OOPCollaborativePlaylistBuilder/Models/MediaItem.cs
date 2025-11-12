@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PlaylistBuilderOOP
+namespace PlaylistBuilderOOP.Models
 {
     public abstract class MediaItem
     {

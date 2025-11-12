@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace PlaylistBuilderOOP
+namespace PlaylistBuilderOOP.Models
 {
     public class Playlist : MediaItem
     {
@@ -16,7 +16,7 @@ namespace PlaylistBuilderOOP
         private readonly List<Song> _songs = new List<Song>();
 
         //userIds of approved collaborators
-        private List<string> approvedCollaborators = new List<string>(); 
+        private List<string> approvedCollaborators = new List<string>();
 
         [JsonPropertyName("Name")]
         public string Name => DisplayName; //allows for inheritance from mediaItem but also keep json as request field name
@@ -61,15 +61,15 @@ namespace PlaylistBuilderOOP
             }
             //error
         }
-        
+
         public void AddCollabUser(string userId, string collabId)
         {
-            if(IsCollaborative == false)
+            if (IsCollaborative == false)
             {
                 return;
             }
 
-            if(CreatedBy != userId)
+            if (CreatedBy != userId)
             {
                 return;
             }
