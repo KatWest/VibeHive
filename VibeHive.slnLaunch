@@ -1,0 +1,19 @@
+[
+  {
+    "Name": "VibeHiveLaunch",
+    "Projects": [
+      {
+        "Path": "gRPCAlbumInventory\\gRPCAlbumInventory.csproj",
+        "Action": "StartWithoutDebugging"
+      },
+      {
+        "Path": "MusicRentalAPI\\MusicRentalAPI.csproj",
+        "Action": "StartWithoutDebugging"
+      },
+      {
+        "Path": "VibeHive\\VibeHive.csproj",
+        "Action": "StartWithoutDebugging"
+      }
+    ]
+  }
+]
