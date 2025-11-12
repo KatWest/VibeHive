@@ -8,16 +8,16 @@ namespace PlaylistBuilderOOP.Models
 {
     public abstract class MediaItem
     {
-        public string Id { get; set; } = Guid.NewGuid().ToString();
+        public string Id { get; set; } 
 
         protected string _displayName;
         public DateTime CreatedAt { get; set; }
 
-        public MediaItem(string id, string displayName)
+        public MediaItem(string displayName)
         {
-            Id = id;
-            CreatedAt = DateTime.Now; //when instance is created initially it also saves it as the createdAt time
+            Id = Guid.NewGuid().ToString();
             _displayName = displayName;
+            CreatedAt = DateTime.Now; //when instance is created initially it also saves it as the createdAt time
         }
 
         public string DisplayName => _displayName;

@@ -26,7 +26,7 @@ namespace PlaylistBuilderOOP.Models
         public IReadOnlyList<Song> Songs => _songs.AsReadOnly();
         public IReadOnlyList<string> ApprovedCollaborators => approvedCollaborators.AsReadOnly();
 
-        public Playlist(string id, string name, string createdBy, bool isCollaborative) : base(id, name)
+        public Playlist(string name, string createdBy, bool isCollaborative) : base(name)
         {
             CreatedBy = createdBy;
             IsCollaborative = isCollaborative;
@@ -59,7 +59,6 @@ namespace PlaylistBuilderOOP.Models
                 var newSong = GetSong(songId);
                 _songs.Add(newSong);
             }
-            //error
         }
 
         public void AddCollabUser(string userId, string collabId)

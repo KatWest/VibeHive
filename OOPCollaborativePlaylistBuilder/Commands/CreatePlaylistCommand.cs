@@ -9,16 +9,18 @@ namespace PlaylistBuilderOOP.Commands
 {
     internal class CreatePlaylistCommand: Command
     {
-        Playlist _newPlaylist;
+        private Playlist _newPlaylist;
+        public Playlist NewPlaylist;
 
-        public CreatePlaylistCommand(string id, string name, string createdBy, bool isCollaborative) 
+        public CreatePlaylistCommand(string name, string createdBy, bool isCollaborative) 
         {
-            _newPlaylist = new Playlist(id, name, createdBy, isCollaborative);
+            _newPlaylist = new Playlist(name, createdBy, isCollaborative);
         }
 
         public void Execute() 
         { 
             Playlist.AddPlaylistToDictionary(_newPlaylist);
+            NewPlaylist = _newPlaylist;
         }
     }
 }

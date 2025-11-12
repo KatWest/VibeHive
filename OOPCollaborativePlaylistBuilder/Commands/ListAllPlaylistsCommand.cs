@@ -9,13 +9,15 @@ namespace PlaylistBuilderOOP.Commands
 {
     internal class ListAllPlaylistsCommand
     {
-        ListAllPlaylistsCommand() { }
+        public List<Playlist> allPlaylists; //null until executed
 
-        public void Execute() 
+        public ListAllPlaylistsCommand() { }
+
+        public List<Playlist> Execute() 
         {
-            Playlist.GetAllPlaylists();
+            allPlaylists = Playlist.GetAllPlaylists();
+
+            return allPlaylists;
         }
-
-
     }
 }

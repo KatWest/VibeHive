@@ -11,6 +11,7 @@ namespace PlaylistBuilderOOP.Commands
     {
         private Playlist _playlist;
         private Song _song;
+        public Song UpdatedSong;
 
         private bool _vote;
 
@@ -39,6 +40,8 @@ namespace PlaylistBuilderOOP.Commands
             {
                 _song.DownVotes();
             }
+
+            UpdatedSong = _song; //make song instance available to return in controller
         }
 
     }

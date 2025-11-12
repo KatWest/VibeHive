@@ -5,7 +5,7 @@ using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PlaylistBuilderOOP
+namespace PlaylistBuilderOOP.Models
 {
     public class User
     {
@@ -23,7 +23,7 @@ namespace PlaylistBuilderOOP
 
         public static List<User> GetAllUsers()
         {
-            if(UsersList == null)
+            if (UsersList == null)
             {
                 return null;
             }
