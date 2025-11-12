@@ -9,7 +9,9 @@ namespace PlaylistBuilderOOP.Models
 {
     public class Playlist : MediaItem
     {
-        //public list of all playlists
+
+        //public list of all playlists - json ignore so calls do not go in endless cycle
+        [JsonIgnore]
         internal static Dictionary<string, Playlist> allPlaylists = new Dictionary<string, Playlist>();
 
         //instance of songs in playlist

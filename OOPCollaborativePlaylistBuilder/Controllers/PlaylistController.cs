@@ -27,8 +27,6 @@ namespace OOPCollaborativePlaylistBuilder.Controllers
 
             //asp.net(core) has built in claims so need this to circumvent to be able to compare id and createdBy
             var userExists = PlaylistBuilderOOP.User.UsersList.Any(u => u.Id == playlist.CreatedBy);
-
-            
             if(userExists == null)
             {
                 return NotFound("User doesn't exist.");
