@@ -25,7 +25,7 @@ namespace OOPCollaborativePlaylistBuilder.Controllers
             }
 
             //
-            var userExists = await _db.User._anyAsync(c => c.CreatedBy == playlist.CreatedBy);
+            var userExists = User.FindFirst(c => c.Id == playlist.CreatedBy);
             if(userExists == null)
             {
                 return NotFound("User doesn't exist.");
