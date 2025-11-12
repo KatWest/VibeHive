@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PlaylistBuilderOOP.Commands;
 using PlaylistBuilderOOP.Models;
+using AppUser = PlaylistBuilderOOP.User;
 
 namespace OOPCollaborativePlaylistBuilder.Controllers
 {
@@ -24,8 +25,10 @@ namespace OOPCollaborativePlaylistBuilder.Controllers
                 return BadRequest("CreatedBy is Required");
             }
 
-            //
-            var userExists = User.FindFirst(c => c.Id == playlist.CreatedBy);
+            //asp.net(core) has built in claims so need this to circumvent to be able to compare id and createdBy
+            var userExists = PlaylistBuilderOOP.User.UsersList.Any(u => u.Id == playlist.CreatedBy);
+
+            
             if(userExists == null)
             {
                 return NotFound("User doesn't exist.");
