@@ -11,6 +11,7 @@ namespace PlaylistBuilderOOP.Commands
     {
         private readonly Song _Song;
         private readonly Playlist _Playlist;
+        public List<Song> updatedPlaylistSongs;
 
         public AddSongtoPlaylistCommand(Song song, string playlistId)
         {
@@ -22,6 +23,7 @@ namespace PlaylistBuilderOOP.Commands
         public void Execute()
         {
             _Playlist.AddSongToPlaylist(_Song.Id);
+            updatedPlaylistSongs = _Playlist.GetSongRankings();
         }
     }
 }

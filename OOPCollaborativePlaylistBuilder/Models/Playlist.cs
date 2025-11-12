@@ -24,7 +24,7 @@ namespace PlaylistBuilderOOP.Models
         public string CreatedBy { get; private set; } //userID
         public IReadOnlyDictionary<string, Playlist> AllPlaylists => allPlaylists.AsReadOnly();
         public IReadOnlyList<Song> Songs => _songs.AsReadOnly();
-        public IReadOnlyList<string> ApprovedCollaborators => approvedCollaborators.AsReadOnly();
+        public List<string> ApprovedCollaborators => approvedCollaborators;
 
         public Playlist(string name, string createdBy, bool isCollaborative) : base(name)
         {

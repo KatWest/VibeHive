@@ -70,9 +70,35 @@ namespace OOPCollaborativePlaylistBuilder.Controllers
         }
 
         //PUT /api/playlists/{ id}/add: Add a song to a specific playlist.
+        [HttpPost("{playlistId}/add")]
+        public ActionResult<List<Song>> AddSongToPlaylist(string playlistId, Song song)
+        {
+            var addSongtoPlaylist = new AddSongtoPlaylistCommand(song, playlistId);
+            addSongtoPlaylist.Execute();
 
+            List<Song> updatedPlaylistSongs = addSongtoPlaylist.updatedPlaylistSongs;
+
+            if(updatedPlaylistSongs == null)
+            {
+                throw new Exception(message: $"Adding the song with Id: {song.Id} to playlist Id: {playlistId} failed.");
+            }
+            return updatedPlaylistSongs;
+        }
 
         //PUT /api/playlists/{id}/invite: Invite other users to collaborate on a playlist.
+        [HttpPost("{playlistId}/invite")]
+        public ActionResult<List<string>> AddUserAsPlaylistCollaborator(string playlistId, string userId, string collabUserId)
+        {
+            var addNewCollabUserToPlayList = new AddCollaboratorCommand(playlistId, userId, collabUserId);
+            addNewCollabUserToPlayList.Execute();
 
+            List<string> newPlaylistCollabUserIds = addNewCollabUserToPlayList.collabUserList;
+
+            if(newPlaylistCollabUserIds == null)
+            {
+                throw new Exception(message: $"Unable to add user with Id: {collabUserId} as collaborator on playlist id:{playlistId}");
+            }
+            return newPlaylistCollabUserIds;
+        }
     }
 }

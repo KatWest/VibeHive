@@ -12,6 +12,7 @@ namespace PlaylistBuilderOOP.Commands
         private string _userId;
         private string _collaboratorId;
         private Playlist _playlist;
+        public List<string> collabUserList; //list of userIds approved to collab - null until execute run
 
         public AddCollaboratorCommand(string playlistId, string userId, string collabUserId ) 
         {
@@ -24,6 +25,8 @@ namespace PlaylistBuilderOOP.Commands
         public void Execute()
         {
             _playlist.AddCollabUser(_userId, _collaboratorId);
+
+            collabUserList = _playlist.ApprovedCollaborators;
         }
     }
 }
