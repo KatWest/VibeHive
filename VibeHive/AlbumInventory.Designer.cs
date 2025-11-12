@@ -70,7 +70,7 @@
             inputPanel.Dock = DockStyle.Left;
             inputPanel.Location = new Point(0, 0);
             inputPanel.Name = "inputPanel";
-            inputPanel.Size = new Size(476, 581);
+            inputPanel.Size = new Size(367, 581);
             inputPanel.TabIndex = 0;
             // 
             // clearBtn
@@ -194,9 +194,9 @@
             dataPanel.Controls.Add(albumsDgv);
             dataPanel.Controls.Add(panel1);
             dataPanel.Dock = DockStyle.Fill;
-            dataPanel.Location = new Point(476, 0);
+            dataPanel.Location = new Point(367, 0);
             dataPanel.Name = "dataPanel";
-            dataPanel.Size = new Size(453, 581);
+            dataPanel.Size = new Size(644, 581);
             dataPanel.TabIndex = 1;
             // 
             // albumsDgv
@@ -208,7 +208,7 @@
             albumsDgv.Location = new Point(0, 70);
             albumsDgv.Name = "albumsDgv";
             albumsDgv.ReadOnly = true;
-            albumsDgv.Size = new Size(453, 511);
+            albumsDgv.Size = new Size(644, 511);
             albumsDgv.TabIndex = 0;
             albumsDgv.CellMouseDoubleClick += albumsDgv_CellMouseDoubleClick;
             // 
@@ -219,12 +219,12 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(453, 70);
+            panel1.Size = new Size(644, 70);
             panel1.TabIndex = 2;
             // 
             // btnRefresh
             // 
-            btnRefresh.Location = new Point(367, 41);
+            btnRefresh.Location = new Point(6, 47);
             btnRefresh.Name = "btnRefresh";
             btnRefresh.Size = new Size(75, 23);
             btnRefresh.TabIndex = 9;
@@ -248,10 +248,10 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(929, 581);
+            ClientSize = new Size(1011, 581);
             Controls.Add(dataPanel);
             Controls.Add(inputPanel);
-            MinimumSize = new Size(945, 620);
+            MinimumSize = new Size(1027, 620);
             Name = "AlbumInventory";
             Text = "VibeHive - Album Inventory";
             Load += AlbumInventory_Load;
