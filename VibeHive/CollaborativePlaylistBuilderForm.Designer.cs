@@ -70,6 +70,7 @@
             radioButton_downVote = new RadioButton();
             label16 = new Label();
             radioButton_Up = new RadioButton();
+            button_searchSong = new Button();
             SuspendLayout();
             // 
             // listBox_Playlists
@@ -98,7 +99,7 @@
             // 
             // button_createPlaylist
             // 
-            button_createPlaylist.Location = new Point(56, 544);
+            button_createPlaylist.Location = new Point(296, 544);
             button_createPlaylist.Name = "button_createPlaylist";
             button_createPlaylist.Size = new Size(146, 29);
             button_createPlaylist.TabIndex = 7;
@@ -108,7 +109,7 @@
             // 
             // textBox_userId
             // 
-            textBox_userId.Location = new Point(56, 378);
+            textBox_userId.Location = new Point(296, 378);
             textBox_userId.Name = "textBox_userId";
             textBox_userId.Size = new Size(125, 27);
             textBox_userId.TabIndex = 8;
@@ -116,7 +117,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(56, 355);
+            label1.Location = new Point(296, 355);
             label1.Name = "label1";
             label1.Size = new Size(104, 20);
             label1.TabIndex = 9;
@@ -125,7 +126,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(56, 422);
+            label2.Location = new Point(296, 422);
             label2.Name = "label2";
             label2.Size = new Size(99, 20);
             label2.TabIndex = 11;
@@ -133,7 +134,7 @@
             // 
             // textBox_playlistName
             // 
-            textBox_playlistName.Location = new Point(56, 445);
+            textBox_playlistName.Location = new Point(296, 445);
             textBox_playlistName.Name = "textBox_playlistName";
             textBox_playlistName.Size = new Size(125, 27);
             textBox_playlistName.TabIndex = 10;
@@ -141,7 +142,7 @@
             // radioButton_true_isCollaborative
             // 
             radioButton_true_isCollaborative.AutoSize = true;
-            radioButton_true_isCollaborative.Location = new Point(56, 512);
+            radioButton_true_isCollaborative.Location = new Point(296, 512);
             radioButton_true_isCollaborative.Name = "radioButton_true_isCollaborative";
             radioButton_true_isCollaborative.Size = new Size(51, 24);
             radioButton_true_isCollaborative.TabIndex = 12;
@@ -152,7 +153,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(56, 489);
+            label3.Location = new Point(296, 489);
             label3.Name = "label3";
             label3.Size = new Size(207, 20);
             label3.TabIndex = 13;
@@ -161,7 +162,7 @@
             // radioButton_false_isCollaborative
             // 
             radioButton_false_isCollaborative.AutoSize = true;
-            radioButton_false_isCollaborative.Location = new Point(130, 512);
+            radioButton_false_isCollaborative.Location = new Point(370, 512);
             radioButton_false_isCollaborative.Name = "radioButton_false_isCollaborative";
             radioButton_false_isCollaborative.Size = new Size(50, 24);
             radioButton_false_isCollaborative.TabIndex = 14;
@@ -172,7 +173,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(335, 413);
+            label5.Location = new Point(575, 413);
             label5.Name = "label5";
             label5.Size = new Size(139, 20);
             label5.TabIndex = 19;
@@ -180,7 +181,7 @@
             // 
             // textBox_collabUserId
             // 
-            textBox_collabUserId.Location = new Point(335, 436);
+            textBox_collabUserId.Location = new Point(575, 436);
             textBox_collabUserId.Name = "textBox_collabUserId";
             textBox_collabUserId.Size = new Size(125, 27);
             textBox_collabUserId.TabIndex = 18;
@@ -188,7 +189,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(335, 346);
+            label6.Location = new Point(575, 346);
             label6.Name = "label6";
             label6.Size = new Size(104, 20);
             label6.TabIndex = 17;
@@ -196,14 +197,14 @@
             // 
             // textBox_creatorId
             // 
-            textBox_creatorId.Location = new Point(335, 369);
+            textBox_creatorId.Location = new Point(575, 369);
             textBox_creatorId.Name = "textBox_creatorId";
             textBox_creatorId.Size = new Size(125, 27);
             textBox_creatorId.TabIndex = 16;
             // 
             // button_AddCollaborator
             // 
-            button_AddCollaborator.Location = new Point(335, 482);
+            button_AddCollaborator.Location = new Point(575, 482);
             button_AddCollaborator.Name = "button_AddCollaborator";
             button_AddCollaborator.Size = new Size(146, 29);
             button_AddCollaborator.TabIndex = 15;
@@ -215,7 +216,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(56, 315);
+            label4.Location = new Point(296, 315);
             label4.Name = "label4";
             label4.Size = new Size(217, 28);
             label4.TabIndex = 20;
@@ -225,7 +226,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.Location = new Point(335, 315);
+            label7.Location = new Point(575, 315);
             label7.Name = "label7";
             label7.Size = new Size(325, 28);
             label7.TabIndex = 21;
@@ -235,7 +236,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.Location = new Point(709, 315);
+            label8.Location = new Point(936, 315);
             label8.Name = "label8";
             label8.Size = new Size(204, 28);
             label8.TabIndex = 27;
@@ -244,7 +245,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(875, 346);
+            label9.Location = new Point(1078, 346);
             label9.Name = "label9";
             label9.Size = new Size(76, 20);
             label9.TabIndex = 26;
@@ -252,7 +253,7 @@
             // 
             // textBox_songTitle
             // 
-            textBox_songTitle.Location = new Point(875, 369);
+            textBox_songTitle.Location = new Point(1078, 369);
             textBox_songTitle.Name = "textBox_songTitle";
             textBox_songTitle.Size = new Size(125, 27);
             textBox_songTitle.TabIndex = 25;
@@ -260,7 +261,7 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(709, 346);
+            label10.Location = new Point(936, 346);
             label10.Name = "label10";
             label10.Size = new Size(72, 20);
             label10.TabIndex = 24;
@@ -268,14 +269,14 @@
             // 
             // textBox_playlistID_addSong
             // 
-            textBox_playlistID_addSong.Location = new Point(709, 369);
+            textBox_playlistID_addSong.Location = new Point(936, 369);
             textBox_playlistID_addSong.Name = "textBox_playlistID_addSong";
             textBox_playlistID_addSong.Size = new Size(125, 27);
             textBox_playlistID_addSong.TabIndex = 23;
             // 
             // button_addSong
             // 
-            button_addSong.Location = new Point(1022, 488);
+            button_addSong.Location = new Point(1209, 489);
             button_addSong.Name = "button_addSong";
             button_addSong.Size = new Size(146, 29);
             button_addSong.TabIndex = 22;
@@ -286,7 +287,7 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(875, 414);
+            label11.Location = new Point(1078, 414);
             label11.Name = "label11";
             label11.Size = new Size(82, 20);
             label11.TabIndex = 29;
@@ -294,7 +295,7 @@
             // 
             // textBox_songArtist
             // 
-            textBox_songArtist.Location = new Point(875, 437);
+            textBox_songArtist.Location = new Point(1078, 437);
             textBox_songArtist.Name = "textBox_songArtist";
             textBox_songArtist.Size = new Size(125, 27);
             textBox_songArtist.TabIndex = 28;
@@ -302,7 +303,7 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(1043, 414);
+            label12.Location = new Point(1223, 414);
             label12.Name = "label12";
             label12.Size = new Size(105, 20);
             label12.TabIndex = 33;
@@ -310,7 +311,7 @@
             // 
             // textBox_songDuration
             // 
-            textBox_songDuration.Location = new Point(1043, 437);
+            textBox_songDuration.Location = new Point(1223, 437);
             textBox_songDuration.Name = "textBox_songDuration";
             textBox_songDuration.Size = new Size(125, 27);
             textBox_songDuration.TabIndex = 32;
@@ -318,7 +319,7 @@
             // label13
             // 
             label13.AutoSize = true;
-            label13.Location = new Point(1043, 346);
+            label13.Location = new Point(1223, 346);
             label13.Name = "label13";
             label13.Size = new Size(86, 20);
             label13.TabIndex = 31;
@@ -326,7 +327,7 @@
             // 
             // textBox_songGenre
             // 
-            textBox_songGenre.Location = new Point(1043, 369);
+            textBox_songGenre.Location = new Point(1223, 369);
             textBox_songGenre.Name = "textBox_songGenre";
             textBox_songGenre.Size = new Size(125, 27);
             textBox_songGenre.TabIndex = 30;
@@ -334,7 +335,7 @@
             // label14
             // 
             label14.AutoSize = true;
-            label14.Location = new Point(709, 414);
+            label14.Location = new Point(936, 414);
             label14.Name = "label14";
             label14.Size = new Size(60, 20);
             label14.TabIndex = 35;
@@ -342,7 +343,7 @@
             // 
             // textBox_songId_AddSong
             // 
-            textBox_songId_AddSong.Location = new Point(709, 437);
+            textBox_songId_AddSong.Location = new Point(936, 437);
             textBox_songId_AddSong.Name = "textBox_songId_AddSong";
             textBox_songId_AddSong.Size = new Size(125, 27);
             textBox_songId_AddSong.TabIndex = 34;
@@ -350,7 +351,7 @@
             // label15
             // 
             label15.AutoSize = true;
-            label15.Location = new Point(1259, 414);
+            label15.Location = new Point(1402, 414);
             label15.Name = "label15";
             label15.Size = new Size(60, 20);
             label15.TabIndex = 49;
@@ -358,7 +359,7 @@
             // 
             // textBox_songId_songVote
             // 
-            textBox_songId_songVote.Location = new Point(1259, 437);
+            textBox_songId_songVote.Location = new Point(1402, 437);
             textBox_songId_songVote.Name = "textBox_songId_songVote";
             textBox_songId_songVote.Size = new Size(125, 27);
             textBox_songId_songVote.TabIndex = 48;
@@ -367,7 +368,7 @@
             // 
             label19.AutoSize = true;
             label19.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label19.Location = new Point(1259, 315);
+            label19.Location = new Point(1402, 315);
             label19.Name = "label19";
             label19.Size = new Size(108, 28);
             label19.TabIndex = 41;
@@ -376,7 +377,7 @@
             // label21
             // 
             label21.AutoSize = true;
-            label21.Location = new Point(1259, 346);
+            label21.Location = new Point(1402, 346);
             label21.Name = "label21";
             label21.Size = new Size(72, 20);
             label21.TabIndex = 38;
@@ -384,14 +385,14 @@
             // 
             // textBox_playlistId_songVote
             // 
-            textBox_playlistId_songVote.Location = new Point(1259, 369);
+            textBox_playlistId_songVote.Location = new Point(1402, 369);
             textBox_playlistId_songVote.Name = "textBox_playlistId_songVote";
             textBox_playlistId_songVote.Size = new Size(125, 27);
             textBox_playlistId_songVote.TabIndex = 37;
             // 
             // button_Vote
             // 
-            button_Vote.Location = new Point(1259, 553);
+            button_Vote.Location = new Point(1402, 553);
             button_Vote.Name = "button_Vote";
             button_Vote.Size = new Size(146, 29);
             button_Vote.TabIndex = 50;
@@ -402,7 +403,7 @@
             // radioButton_downVote
             // 
             radioButton_downVote.AutoSize = true;
-            radioButton_downVote.Location = new Point(1348, 498);
+            radioButton_downVote.Location = new Point(1491, 498);
             radioButton_downVote.Name = "radioButton_downVote";
             radioButton_downVote.Size = new Size(99, 24);
             radioButton_downVote.TabIndex = 53;
@@ -413,7 +414,7 @@
             // label16
             // 
             label16.AutoSize = true;
-            label16.Location = new Point(1259, 475);
+            label16.Location = new Point(1402, 475);
             label16.Name = "label16";
             label16.Size = new Size(39, 20);
             label16.TabIndex = 52;
@@ -422,7 +423,7 @@
             // radioButton_Up
             // 
             radioButton_Up.AutoSize = true;
-            radioButton_Up.Location = new Point(1259, 498);
+            radioButton_Up.Location = new Point(1402, 498);
             radioButton_Up.Name = "radioButton_Up";
             radioButton_Up.Size = new Size(83, 24);
             radioButton_Up.TabIndex = 51;
@@ -430,11 +431,21 @@
             radioButton_Up.Text = "Up Vote";
             radioButton_Up.UseVisualStyleBackColor = true;
             // 
+            // button_searchSong
+            // 
+            button_searchSong.Location = new Point(1057, 489);
+            button_searchSong.Name = "button_searchSong";
+            button_searchSong.Size = new Size(146, 29);
+            button_searchSong.TabIndex = 54;
+            button_searchSong.Text = "Search Song";
+            button_searchSong.UseVisualStyleBackColor = true;
+            // 
             // CollaborativePlaylistBuilderForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1605, 822);
+            ClientSize = new Size(1605, 610);
+            Controls.Add(button_searchSong);
             Controls.Add(radioButton_downVote);
             Controls.Add(label16);
             Controls.Add(radioButton_Up);
@@ -528,5 +539,6 @@
         private RadioButton radioButton_downVote;
         private Label label16;
         private RadioButton radioButton_Up;
+        private Button button_searchSong;
     }
 }
