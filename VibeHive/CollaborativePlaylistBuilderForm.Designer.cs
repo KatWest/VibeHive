@@ -70,31 +70,33 @@
             radioButton_downVote = new RadioButton();
             label16 = new Label();
             radioButton_Up = new RadioButton();
-            button_searchSong = new Button();
+            label17 = new Label();
+            label18 = new Label();
+            label20 = new Label();
             SuspendLayout();
             // 
             // listBox_Playlists
             // 
             listBox_Playlists.FormattingEnabled = true;
-            listBox_Playlists.Location = new Point(301, 99);
+            listBox_Playlists.Location = new Point(301, 68);
             listBox_Playlists.Name = "listBox_Playlists";
-            listBox_Playlists.Size = new Size(599, 184);
+            listBox_Playlists.Size = new Size(599, 204);
             listBox_Playlists.TabIndex = 4;
             // 
             // listBox_users
             // 
             listBox_users.FormattingEnabled = true;
-            listBox_users.Location = new Point(11, 99);
+            listBox_users.Location = new Point(11, 68);
             listBox_users.Name = "listBox_users";
-            listBox_users.Size = new Size(272, 184);
+            listBox_users.Size = new Size(272, 204);
             listBox_users.TabIndex = 5;
             // 
             // listBox_PlaylistSongs
             // 
             listBox_PlaylistSongs.FormattingEnabled = true;
-            listBox_PlaylistSongs.Location = new Point(936, 99);
+            listBox_PlaylistSongs.Location = new Point(936, 68);
             listBox_PlaylistSongs.Name = "listBox_PlaylistSongs";
-            listBox_PlaylistSongs.Size = new Size(646, 184);
+            listBox_PlaylistSongs.Size = new Size(646, 204);
             listBox_PlaylistSongs.TabIndex = 6;
             // 
             // button_createPlaylist
@@ -431,21 +433,44 @@
             radioButton_Up.Text = "Up Vote";
             radioButton_Up.UseVisualStyleBackColor = true;
             // 
-            // button_searchSong
+            // label17
             // 
-            button_searchSong.Location = new Point(1057, 489);
-            button_searchSong.Name = "button_searchSong";
-            button_searchSong.Size = new Size(146, 29);
-            button_searchSong.TabIndex = 54;
-            button_searchSong.Text = "Search Song";
-            button_searchSong.UseVisualStyleBackColor = true;
+            label17.AutoSize = true;
+            label17.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label17.Location = new Point(6, 25);
+            label17.Name = "label17";
+            label17.Size = new Size(63, 28);
+            label17.TabIndex = 55;
+            label17.Text = "Users";
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label18.Location = new Point(296, 25);
+            label18.Name = "label18";
+            label18.Size = new Size(90, 28);
+            label18.TabIndex = 56;
+            label18.Text = "Playlists";
+            // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label20.Location = new Point(931, 25);
+            label20.Name = "label20";
+            label20.Size = new Size(143, 28);
+            label20.TabIndex = 57;
+            label20.Text = "Playlist Songs";
             // 
             // CollaborativePlaylistBuilderForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1605, 610);
-            Controls.Add(button_searchSong);
+            Controls.Add(label20);
+            Controls.Add(label18);
+            Controls.Add(label17);
             Controls.Add(radioButton_downVote);
             Controls.Add(label16);
             Controls.Add(radioButton_Up);
@@ -539,6 +564,8 @@
         private RadioButton radioButton_downVote;
         private Label label16;
         private RadioButton radioButton_Up;
-        private Button button_searchSong;
+        private Label label17;
+        private Label label18;
+        private Label label20;
     }
 }

@@ -63,6 +63,21 @@ namespace VibeHive
             }
         }
 
+        private void button_AddCollaborator_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button_addSong_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button_Vote_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private async Task LoadUsersAsync()
         {
             try
@@ -115,21 +130,30 @@ namespace VibeHive
             }
         }
 
-        private void button_AddCollaborator_Click(object sender, EventArgs e)
-        {
+       private async Task LoadPlaylistSongsAsync(string playlistId)
+       {
+            try
+            {
+                HttpResponseMessage response = await _httpClient.GetAsync($"{apiBaseUrl}/{playlistId}/playlist/rankings");
+                if (response.IsSuccessStatusCode)
+                {
+                    string json = await response.Content.ReadAsStringAsync();
+                    var playlistSongs = JsonConvert.DeserializeObject<List<PlaylistDto>>(json);
 
-        }
-
-        private void button_addSong_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button_Vote_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        //ToDo:Add playlist search
+                    listBox_PlaylistSongs.DataSource = playlistSongs.Select(p => new { Display = $"{p.Id} - {p.Name} - {p.CreatedBy} - {p.isCollaborative}", Value = p.Id })
+                    .ToList();
+                    listBox_Playlists.DisplayMember = "Display";
+                    listBox_Playlists.ValueMember = "Value";
+                }
+                else
+                {
+                    MessageBox.Show($"Failed to load the songs for Playlist Id: {playlistId}: {response.StatusCode}");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+            }
+        }      
     }
 }
