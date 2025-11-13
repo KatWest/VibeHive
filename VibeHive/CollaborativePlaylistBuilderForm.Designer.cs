@@ -73,6 +73,8 @@
             label17 = new Label();
             label18 = new Label();
             label20 = new Label();
+            label22 = new Label();
+            textBox_playlistId_addCollab = new TextBox();
             SuspendLayout();
             // 
             // listBox_Playlists
@@ -206,7 +208,7 @@
             // 
             // button_AddCollaborator
             // 
-            button_AddCollaborator.Location = new Point(575, 482);
+            button_AddCollaborator.Location = new Point(568, 544);
             button_AddCollaborator.Name = "button_AddCollaborator";
             button_AddCollaborator.Size = new Size(146, 29);
             button_AddCollaborator.TabIndex = 15;
@@ -463,11 +465,29 @@
             label20.TabIndex = 57;
             label20.Text = "Playlist Songs";
             // 
+            // label22
+            // 
+            label22.AutoSize = true;
+            label22.Location = new Point(575, 475);
+            label22.Name = "label22";
+            label22.Size = new Size(72, 20);
+            label22.TabIndex = 59;
+            label22.Text = "Playlist Id";
+            // 
+            // textBox_playlistId_addCollab
+            // 
+            textBox_playlistId_addCollab.Location = new Point(575, 498);
+            textBox_playlistId_addCollab.Name = "textBox_playlistId_addCollab";
+            textBox_playlistId_addCollab.Size = new Size(125, 27);
+            textBox_playlistId_addCollab.TabIndex = 58;
+            // 
             // CollaborativePlaylistBuilderForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1605, 610);
+            Controls.Add(label22);
+            Controls.Add(textBox_playlistId_addCollab);
             Controls.Add(label20);
             Controls.Add(label18);
             Controls.Add(label17);
@@ -567,5 +587,7 @@
         private Label label17;
         private Label label18;
         private Label label20;
+        private Label label22;
+        private TextBox textBox_playlistId_addCollab;
     }
 }
