@@ -63,14 +63,75 @@ namespace VibeHive
             }
         }
 
-        private void button_AddCollaborator_Click(object sender, EventArgs e)
+        private async void button_AddCollaborator_Click(object sender, EventArgs e)
         {
+            try
+            {
+                dynamic playlist = listBox_Playlists.SelectedItem;
+                dynamic user = listBox_users.SelectedItem;
 
+                var addCollab = new
+                {
+                    playlistId = playlist.Value.ToString(),
+                    userId = playlist.CreatorId.ToString(),
+                    collabUserId = user.Value.ToString()
+                };
+
+                var json = JsonConvert.SerializeObject(addCollab);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = await _httpClient.PostAsync($"{apiBaseUrl}/playlist/{playlist.Value.ToString()}/invite", content);
+                if (response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show($"Collaborator added to playlist successfully.");
+                }
+                else
+                {
+                    MessageBox.Show($"Failed to add collaborator: {response.StatusCode}");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+            }
         }
 
-        private void button_addSong_Click(object sender, EventArgs e)
+        private async void button_addSong_Click(object sender, EventArgs e)
         {
+            //Todo: do i need to verify user is auth to add song?
+            try
+            {
+                dynamic playlist = listBox_Playlists.SelectedItem;
 
+                var newSong = new
+                {
+                    Title = textBox_songTitle.Text,
+                    Artist = textBox_songArtist.Text,
+                    Genre = textBox_songGenre.Text,
+                    Duration = new
+                    {
+                        minutes = numericUpDown_songMinutes.Value,
+                        seconds = numericUpDown_songSeconds.Value
+                    }
+                };
+
+                var json = JsonConvert.SerializeObject(newSong);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = await _httpClient.PostAsync($"{apiBaseUrl}/playlist/{playlist.Value.ToString()}/add", content);
+                if (response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show($"New song was added to the playlist successfully.");
+                }
+                else
+                {
+                    MessageBox.Show($"Failed to add the new song: {response.StatusCode}");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+            }
         }
 
         private void button_Vote_Click(object sender, EventArgs e)
@@ -114,7 +175,11 @@ namespace VibeHive
                     string json = await response.Content.ReadAsStringAsync();
                     var playlists = JsonConvert.DeserializeObject<List<PlaylistDto>>(json);
 
-                    listBox_Playlists.DataSource = playlists.Select(p => new { Display = $"{p.Id} - {p.Name} - {p.CreatedBy} - {p.isCollaborative}", Value = p.Id })
+                    listBox_Playlists.DataSource = playlists.Select(p => new { 
+                        Display = $"{p.Id} - {p.Name} - {p.CreatedBy} - {p.isCollaborative}", 
+                        Value = p.Id, 
+                        CreatorId = p.CreatedBy 
+                    })
                     .ToList();
                     listBox_Playlists.DisplayMember = "Display";
                     listBox_Playlists.ValueMember = "Value";
@@ -130,30 +195,48 @@ namespace VibeHive
             }
         }
 
-       private async Task LoadPlaylistSongsAsync(string playlistId)
-       {
-            try
-            {
-                HttpResponseMessage response = await _httpClient.GetAsync($"{apiBaseUrl}/{playlistId}/playlist/rankings");
-                if (response.IsSuccessStatusCode)
-                {
-                    string json = await response.Content.ReadAsStringAsync();
-                    var playlistSongs = JsonConvert.DeserializeObject<List<PlaylistDto>>(json);
+        private async Task LoadPlaylistSongsAsync(string playlistId)
+        {
+            //try
+            //{
+            //    HttpResponseMessage response = await _httpClient.GetAsync($"{apiBaseUrl}/{playlistId}/playlist/rankings");
+            //    if (response.IsSuccessStatusCode)
+            //    {
+            //        string json = await response.Content.ReadAsStringAsync();
+            //        var playlistSongs = JsonConvert.DeserializeObject<List<PlaylistDto>>(json);
 
-                    listBox_PlaylistSongs.DataSource = playlistSongs.Select(p => new { Display = $"{p.Id} - {p.Name} - {p.CreatedBy} - {p.isCollaborative}", Value = p.Id })
-                    .ToList();
-                    listBox_Playlists.DisplayMember = "Display";
-                    listBox_Playlists.ValueMember = "Value";
-                }
-                else
-                {
-                    MessageBox.Show($"Failed to load the songs for Playlist Id: {playlistId}: {response.StatusCode}");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error: {ex.Message}");
-            }
-        }      
+            //        listBox_PlaylistSongs.DataSource = playlistSongs.Select(p => new { Display = $"{p.Id} - {p.Name} - {p.CreatedBy} - {p.isCollaborative}", Value = p.Id })
+            //        .ToList();
+            //        listBox_Playlists.DisplayMember = "Display";
+            //        listBox_Playlists.ValueMember = "Value";
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show($"Failed to load the songs for Playlist Id: {playlistId}: {response.StatusCode}");
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show($"Error: {ex.Message}");
+            //}
+        }
+
+        private void listBox_users_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            dynamic item = listBox_users.SelectedItem;
+            //popular id for playlist owner textboxes
+            textBox_userId.Text = item.Value.ToString();
+            textBox_collabUserId.Text = item.Value.ToString();
+        }
+
+        private void listBox_Playlists_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            dynamic item = listBox_Playlists.SelectedItem;
+            //populate add collab section
+            textBox_creatorId.Text = item.CreatorId.ToString();
+            textBox_playlistId_addCollab.Text = item.Value.ToString();
+            //populate add song section
+            textBox_playlistID_addSong.Text = item.Value.ToString();
+        }
     }
 }

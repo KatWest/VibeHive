@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using OOPCollaborativePlaylistBuilder.Models;
 using PlaylistBuilderOOP.Commands;
 using PlaylistBuilderOOP.Models;
 using AppUser = PlaylistBuilderOOP.User;
@@ -92,9 +93,9 @@ namespace OOPCollaborativePlaylistBuilder.Controllers
             return Ok(songListRanked);
         }
 
-        //PUT /api/playlists/{ id}/add: Add a song to a specific playlist.
+        //PUT /api/playlists/{id}/add: Add a song to a specific playlist.
         [HttpPost("{playlistId}/add")]
-        public ActionResult<List<Song>> AddSongToPlaylist(string playlistId, Song song)
+        public ActionResult<List<Song>> AddSongToPlaylist([FromRoute]string playlistId, [FromBody]Song song)
         {
             var addSongtoPlaylist = new AddSongtoPlaylistCommand(song, playlistId);
             addSongtoPlaylist.Execute();
@@ -110,16 +111,18 @@ namespace OOPCollaborativePlaylistBuilder.Controllers
 
         //PUT /api/playlists/{id}/invite: Invite other users to collaborate on a playlist.
         [HttpPost("{playlistId}/invite")]
-        public ActionResult<List<string>> AddUserAsPlaylistCollaborator(string playlistId, string userId, string collabUserId)
+        public ActionResult<List<string>> AddUserAsPlaylistCollaborator([FromRoute]string playlistId, [FromBody]CollabUserApiRequest CollabUser)
         {
-            var addNewCollabUserToPlayList = new AddCollaboratorCommand(playlistId, userId, collabUserId);
+
+
+            var addNewCollabUserToPlayList = new AddCollaboratorCommand(playlistId, CollabUser.userId, CollabUser.collabUserId);
             addNewCollabUserToPlayList.Execute();
 
             List<string> newPlaylistCollabUserIds = addNewCollabUserToPlayList.collabUserList;
 
             if(newPlaylistCollabUserIds == null)
             {
-                throw new Exception(message: $"Unable to add user with Id: {collabUserId} as collaborator on playlist id:{playlistId}");
+                throw new Exception(message: $"Unable to add user with Id: {CollabUser.collabUserId} as collaborator on playlist id:{playlistId}");
             }
             return Ok(newPlaylistCollabUserIds);
         }

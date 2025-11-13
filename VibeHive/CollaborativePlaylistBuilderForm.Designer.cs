@@ -56,11 +56,8 @@
             label11 = new Label();
             textBox_songArtist = new TextBox();
             label12 = new Label();
-            textBox_songDuration = new TextBox();
             label13 = new Label();
             textBox_songGenre = new TextBox();
-            label14 = new Label();
-            textBox_songId_AddSong = new TextBox();
             label15 = new Label();
             textBox_songId_songVote = new TextBox();
             label19 = new Label();
@@ -75,6 +72,12 @@
             label20 = new Label();
             label22 = new Label();
             textBox_playlistId_addCollab = new TextBox();
+            label23 = new Label();
+            label24 = new Label();
+            numericUpDown_songMinutes = new NumericUpDown();
+            numericUpDown_songSeconds = new NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown_songMinutes).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown_songSeconds).BeginInit();
             SuspendLayout();
             // 
             // listBox_Playlists
@@ -84,6 +87,7 @@
             listBox_Playlists.Name = "listBox_Playlists";
             listBox_Playlists.Size = new Size(599, 204);
             listBox_Playlists.TabIndex = 4;
+            listBox_Playlists.SelectedIndexChanged += listBox_Playlists_SelectedIndexChanged;
             // 
             // listBox_users
             // 
@@ -92,6 +96,7 @@
             listBox_users.Name = "listBox_users";
             listBox_users.Size = new Size(272, 204);
             listBox_users.TabIndex = 5;
+            listBox_users.SelectedIndexChanged += listBox_users_SelectedIndexChanged;
             // 
             // listBox_PlaylistSongs
             // 
@@ -240,7 +245,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.Location = new Point(936, 315);
+            label8.Location = new Point(983, 316);
             label8.Name = "label8";
             label8.Size = new Size(204, 28);
             label8.TabIndex = 27;
@@ -249,7 +254,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(1078, 346);
+            label9.Location = new Point(1125, 347);
             label9.Name = "label9";
             label9.Size = new Size(76, 20);
             label9.TabIndex = 26;
@@ -257,7 +262,7 @@
             // 
             // textBox_songTitle
             // 
-            textBox_songTitle.Location = new Point(1078, 369);
+            textBox_songTitle.Location = new Point(1125, 370);
             textBox_songTitle.Name = "textBox_songTitle";
             textBox_songTitle.Size = new Size(125, 27);
             textBox_songTitle.TabIndex = 25;
@@ -265,7 +270,7 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(936, 346);
+            label10.Location = new Point(983, 347);
             label10.Name = "label10";
             label10.Size = new Size(72, 20);
             label10.TabIndex = 24;
@@ -273,14 +278,14 @@
             // 
             // textBox_playlistID_addSong
             // 
-            textBox_playlistID_addSong.Location = new Point(936, 369);
+            textBox_playlistID_addSong.Location = new Point(983, 370);
             textBox_playlistID_addSong.Name = "textBox_playlistID_addSong";
             textBox_playlistID_addSong.Size = new Size(125, 27);
             textBox_playlistID_addSong.TabIndex = 23;
             // 
             // button_addSong
             // 
-            button_addSong.Location = new Point(1209, 489);
+            button_addSong.Location = new Point(1104, 553);
             button_addSong.Name = "button_addSong";
             button_addSong.Size = new Size(146, 29);
             button_addSong.TabIndex = 22;
@@ -291,7 +296,7 @@
             // label11
             // 
             label11.AutoSize = true;
-            label11.Location = new Point(1078, 414);
+            label11.Location = new Point(1125, 414);
             label11.Name = "label11";
             label11.Size = new Size(82, 20);
             label11.TabIndex = 29;
@@ -299,7 +304,7 @@
             // 
             // textBox_songArtist
             // 
-            textBox_songArtist.Location = new Point(1078, 437);
+            textBox_songArtist.Location = new Point(1125, 437);
             textBox_songArtist.Name = "textBox_songArtist";
             textBox_songArtist.Size = new Size(125, 27);
             textBox_songArtist.TabIndex = 28;
@@ -307,23 +312,16 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Location = new Point(1223, 414);
+            label12.Location = new Point(978, 500);
             label12.Name = "label12";
-            label12.Size = new Size(105, 20);
+            label12.Size = new Size(112, 20);
             label12.TabIndex = 33;
-            label12.Text = "Song Duration";
-            // 
-            // textBox_songDuration
-            // 
-            textBox_songDuration.Location = new Point(1223, 437);
-            textBox_songDuration.Name = "textBox_songDuration";
-            textBox_songDuration.Size = new Size(125, 27);
-            textBox_songDuration.TabIndex = 32;
+            label12.Text = "Song Duration: ";
             // 
             // label13
             // 
             label13.AutoSize = true;
-            label13.Location = new Point(1223, 346);
+            label13.Location = new Point(983, 415);
             label13.Name = "label13";
             label13.Size = new Size(86, 20);
             label13.TabIndex = 31;
@@ -331,26 +329,10 @@
             // 
             // textBox_songGenre
             // 
-            textBox_songGenre.Location = new Point(1223, 369);
+            textBox_songGenre.Location = new Point(983, 438);
             textBox_songGenre.Name = "textBox_songGenre";
             textBox_songGenre.Size = new Size(125, 27);
             textBox_songGenre.TabIndex = 30;
-            // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.Location = new Point(936, 414);
-            label14.Name = "label14";
-            label14.Size = new Size(60, 20);
-            label14.TabIndex = 35;
-            label14.Text = "Song Id";
-            // 
-            // textBox_songId_AddSong
-            // 
-            textBox_songId_AddSong.Location = new Point(936, 437);
-            textBox_songId_AddSong.Name = "textBox_songId_AddSong";
-            textBox_songId_AddSong.Size = new Size(125, 27);
-            textBox_songId_AddSong.TabIndex = 34;
             // 
             // label15
             // 
@@ -481,11 +463,47 @@
             textBox_playlistId_addCollab.Size = new Size(125, 27);
             textBox_playlistId_addCollab.TabIndex = 58;
             // 
+            // label23
+            // 
+            label23.AutoSize = true;
+            label23.Location = new Point(1087, 476);
+            label23.Name = "label23";
+            label23.Size = new Size(61, 20);
+            label23.TabIndex = 61;
+            label23.Text = "Minutes";
+            // 
+            // label24
+            // 
+            label24.AutoSize = true;
+            label24.Location = new Point(1174, 476);
+            label24.Name = "label24";
+            label24.Size = new Size(64, 20);
+            label24.TabIndex = 62;
+            label24.Text = "Seconds";
+            // 
+            // numericUpDown_songMinutes
+            // 
+            numericUpDown_songMinutes.Location = new Point(1089, 500);
+            numericUpDown_songMinutes.Name = "numericUpDown_songMinutes";
+            numericUpDown_songMinutes.Size = new Size(74, 27);
+            numericUpDown_songMinutes.TabIndex = 63;
+            // 
+            // numericUpDown_songSeconds
+            // 
+            numericUpDown_songSeconds.Location = new Point(1174, 500);
+            numericUpDown_songSeconds.Name = "numericUpDown_songSeconds";
+            numericUpDown_songSeconds.Size = new Size(74, 27);
+            numericUpDown_songSeconds.TabIndex = 64;
+            // 
             // CollaborativePlaylistBuilderForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1605, 610);
+            Controls.Add(numericUpDown_songSeconds);
+            Controls.Add(numericUpDown_songMinutes);
+            Controls.Add(label24);
+            Controls.Add(label23);
             Controls.Add(label22);
             Controls.Add(textBox_playlistId_addCollab);
             Controls.Add(label20);
@@ -500,10 +518,7 @@
             Controls.Add(label19);
             Controls.Add(label21);
             Controls.Add(textBox_playlistId_songVote);
-            Controls.Add(label14);
-            Controls.Add(textBox_songId_AddSong);
             Controls.Add(label12);
-            Controls.Add(textBox_songDuration);
             Controls.Add(label13);
             Controls.Add(textBox_songGenre);
             Controls.Add(label11);
@@ -535,6 +550,8 @@
             Name = "CollaborativePlaylistBuilderForm";
             Text = "CollaborativePlaylistBuilder";
             Load += CollaborativePlaylistBuilder_Load;
+            ((System.ComponentModel.ISupportInitialize)numericUpDown_songMinutes).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDown_songSeconds).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -569,11 +586,8 @@
         private Label label11;
         private TextBox textBox_songArtist;
         private Label label12;
-        private TextBox textBox_songDuration;
         private Label label13;
         private TextBox textBox_songGenre;
-        private Label label14;
-        private TextBox textBox_songId_AddSong;
         private Label label15;
         private TextBox textBox_songId_songVote;
         private Label label19;
@@ -589,5 +603,9 @@
         private Label label20;
         private Label label22;
         private TextBox textBox_playlistId_addCollab;
+        private Label label23;
+        private Label label24;
+        private NumericUpDown numericUpDown_songMinutes;
+        private NumericUpDown numericUpDown_songSeconds;
     }
 }
