@@ -195,18 +195,22 @@ namespace VibeHive
 
         private async Task LoadPlaylistSongsAsync(string playlistId)
         {
+            //Todo: deal with loading without error when count =0;
             try
             {
-                HttpResponseMessage response = await _httpClient.GetAsync($"{apiBaseUrl}/{playlistId}/playlist/rankings");
+                HttpResponseMessage response = await _httpClient.GetAsync($"{apiBaseUrl}/playlist/{playlistId}/rankings");
                 if (response.IsSuccessStatusCode)
                 {
                     string json = await response.Content.ReadAsStringAsync();
                     var playlistSongs = JsonConvert.DeserializeObject<List<SongDto>>(json);
 
-                    listBox_PlaylistSongs.DataSource = playlistSongs.Select(s => new { Display = $"{s.Id} - {s.Title} - {s.Artist} - {s.Genre} - {s.Duration} - {s.Votes}", Value = p.Id })
+                    listBox_PlaylistSongs.DataSource = playlistSongs.Select(s => new { 
+                        Display = $"{s.Id} - {s.Title} - {s.Artist} - {s.Genre} - {s.Duration} - {s.Votes}", 
+                        Value = s.Id 
+                    })
                     .ToList();
-                    listBox_Playlists.DisplayMember = "Display";
-                    listBox_Playlists.ValueMember = "Value";
+                    listBox_PlaylistSongs.DisplayMember = "Display";
+                    listBox_PlaylistSongs.ValueMember = "Value";
                 }
                 else
                 {
