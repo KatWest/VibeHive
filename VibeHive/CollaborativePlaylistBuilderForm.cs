@@ -108,11 +108,8 @@ namespace VibeHive
                     Title = textBox_songTitle.Text,
                     Artist = textBox_songArtist.Text,
                     Genre = textBox_songGenre.Text,
-                    Duration = new
-                    {
-                        minutes = numericUpDown_songMinutes.Value,
-                        seconds = numericUpDown_songSeconds.Value
-                    }
+                    DurationMinutes = numericUpDown_songMinutes.Value,
+                    DurationSeconds = numericUpDown_songSeconds.Value
                 };
 
                 var json = JsonConvert.SerializeObject(newSong);
@@ -122,6 +119,7 @@ namespace VibeHive
                 if (response.IsSuccessStatusCode)
                 {
                     MessageBox.Show($"New song was added to the playlist successfully.");
+                    LoadPlaylistSongsAsync(playlist.Value.ToString());
                 }
                 else
                 {
@@ -197,28 +195,28 @@ namespace VibeHive
 
         private async Task LoadPlaylistSongsAsync(string playlistId)
         {
-            //try
-            //{
-            //    HttpResponseMessage response = await _httpClient.GetAsync($"{apiBaseUrl}/{playlistId}/playlist/rankings");
-            //    if (response.IsSuccessStatusCode)
-            //    {
-            //        string json = await response.Content.ReadAsStringAsync();
-            //        var playlistSongs = JsonConvert.DeserializeObject<List<PlaylistDto>>(json);
+            try
+            {
+                HttpResponseMessage response = await _httpClient.GetAsync($"{apiBaseUrl}/{playlistId}/playlist/rankings");
+                if (response.IsSuccessStatusCode)
+                {
+                    string json = await response.Content.ReadAsStringAsync();
+                    var playlistSongs = JsonConvert.DeserializeObject<List<SongDto>>(json);
 
-            //        listBox_PlaylistSongs.DataSource = playlistSongs.Select(p => new { Display = $"{p.Id} - {p.Name} - {p.CreatedBy} - {p.isCollaborative}", Value = p.Id })
-            //        .ToList();
-            //        listBox_Playlists.DisplayMember = "Display";
-            //        listBox_Playlists.ValueMember = "Value";
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show($"Failed to load the songs for Playlist Id: {playlistId}: {response.StatusCode}");
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show($"Error: {ex.Message}");
-            //}
+                    listBox_PlaylistSongs.DataSource = playlistSongs.Select(s => new { Display = $"{s.Id} - {s.Title} - {s.Artist} - {s.Genre} - {s.Duration} - {s.Votes}", Value = p.Id })
+                    .ToList();
+                    listBox_Playlists.DisplayMember = "Display";
+                    listBox_Playlists.ValueMember = "Value";
+                }
+                else
+                {
+                    MessageBox.Show($"Failed to load the songs for Playlist Id: {playlistId}: {response.StatusCode}");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+            }
         }
 
         private void listBox_users_SelectedIndexChanged(object sender, EventArgs e)
@@ -237,6 +235,9 @@ namespace VibeHive
             textBox_playlistId_addCollab.Text = item.Value.ToString();
             //populate add song section
             textBox_playlistID_addSong.Text = item.Value.ToString();
+
+            //populates playlists songs once clicked
+            LoadPlaylistSongsAsync( item.Value.ToString());
         }
     }
 }

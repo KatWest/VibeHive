@@ -52,15 +52,9 @@ namespace PlaylistBuilderOOP.Models
         }
 
         //methods
-        public void AddSongToPlaylist(string songId)
+        public void AddSongToPlaylist(Song newSong)
         {
-            //check if song instance exists in playlist - if not add
-            if (!_songs.Any(song => song.Id == songId))
-            {
-                //get song and add
-                var newSong = GetSong(songId);
-                _songs.Add(newSong);
-            }
+            _songs.Add(newSong);
         }
 
         public void AddCollabUser(string userId, string collabId)

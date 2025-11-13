@@ -22,7 +22,7 @@ namespace PlaylistBuilderOOP.Commands
 
         public void Execute()
         {
-            _Playlist.AddSongToPlaylist(_Song.Id);
+            _Playlist.AddSongToPlaylist(_Song);
             updatedPlaylistSongs = _Playlist.GetSongRankings();
         }
     }

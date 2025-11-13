@@ -95,16 +95,26 @@ namespace OOPCollaborativePlaylistBuilder.Controllers
 
         //PUT /api/playlists/{id}/add: Add a song to a specific playlist.
         [HttpPost("{playlistId}/add")]
-        public ActionResult<List<Song>> AddSongToPlaylist([FromRoute]string playlistId, [FromBody]Song song)
+        public ActionResult<List<Song>> AddSongToPlaylist([FromRoute]string playlistId, [FromBody]SongApiRequest song)
         {
-            var addSongtoPlaylist = new AddSongtoPlaylistCommand(song, playlistId);
+            //translate ints to duration datatype
+            TimeSpan newTimeSpan = new TimeSpan(0, (int)song.DurationMinutes, (int)song.DurationSeconds);
+
+            Song newSong = new Song( song.Title, song.Artist, song.Genre, newTimeSpan );
+
+            if(newSong == null)
+            {
+                throw new Exception(message: "Failed to make create a new song.");
+            }
+
+            var addSongtoPlaylist = new AddSongtoPlaylistCommand(newSong, playlistId);
             addSongtoPlaylist.Execute();
 
             List<Song> updatedPlaylistSongs = addSongtoPlaylist.updatedPlaylistSongs;
 
             if(updatedPlaylistSongs == null)
             {
-                throw new Exception(message: $"Adding the song with Id: {song.Id} to playlist Id: {playlistId} failed.");
+                throw new Exception(message: $"Adding the song with Id: {newSong.Id} to playlist Id: {playlistId} failed.");
             }
             return Ok(updatedPlaylistSongs);
         }
