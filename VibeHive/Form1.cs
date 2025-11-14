@@ -21,8 +21,8 @@ namespace VibeHive
 
         private void playlistBuilderBtn_Click(object sender, EventArgs e)
         {
-            //PlaylistBuilderForm playlistBuilder = new PlaylistBuilderForm();
-            //playlistBuilder.Show();
+            CollaborativePlaylistBuilderForm playlistBuilder = new CollaborativePlaylistBuilderForm();
+            playlistBuilder.Show();
         }
     }
 }

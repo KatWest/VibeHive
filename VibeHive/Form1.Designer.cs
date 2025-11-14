@@ -35,19 +35,21 @@
             // 
             // playlistBuilderBtn
             // 
-            playlistBuilderBtn.Location = new Point(160, 51);
+            playlistBuilderBtn.Location = new Point(183, 68);
+            playlistBuilderBtn.Margin = new Padding(3, 4, 3, 4);
             playlistBuilderBtn.Name = "playlistBuilderBtn";
-            playlistBuilderBtn.Size = new Size(129, 85);
+            playlistBuilderBtn.Size = new Size(147, 113);
             playlistBuilderBtn.TabIndex = 2;
-            playlistBuilderBtn.Text = "Playlist Builder (wip)";
+            playlistBuilderBtn.Text = "Playlist Builder";
             playlistBuilderBtn.UseVisualStyleBackColor = true;
             playlistBuilderBtn.Click += playlistBuilderBtn_Click;
             // 
             // musicRentalBtn
             // 
-            musicRentalBtn.Location = new Point(295, 51);
+            musicRentalBtn.Location = new Point(337, 68);
+            musicRentalBtn.Margin = new Padding(3, 4, 3, 4);
             musicRentalBtn.Name = "musicRentalBtn";
-            musicRentalBtn.Size = new Size(129, 85);
+            musicRentalBtn.Size = new Size(147, 113);
             musicRentalBtn.TabIndex = 3;
             musicRentalBtn.Text = "Music Rental";
             musicRentalBtn.UseVisualStyleBackColor = true;
@@ -55,9 +57,10 @@
             // 
             // albumManageBtn
             // 
-            albumManageBtn.Location = new Point(25, 51);
+            albumManageBtn.Location = new Point(29, 68);
+            albumManageBtn.Margin = new Padding(3, 4, 3, 4);
             albumManageBtn.Name = "albumManageBtn";
-            albumManageBtn.Size = new Size(129, 85);
+            albumManageBtn.Size = new Size(147, 113);
             albumManageBtn.TabIndex = 1;
             albumManageBtn.Text = "Album Management";
             albumManageBtn.UseVisualStyleBackColor = true;
@@ -65,12 +68,13 @@
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(489, 196);
+            ClientSize = new Size(559, 261);
             Controls.Add(albumManageBtn);
             Controls.Add(musicRentalBtn);
             Controls.Add(playlistBuilderBtn);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "Form1";
             Text = "VibeHive";
             ResumeLayout(false);

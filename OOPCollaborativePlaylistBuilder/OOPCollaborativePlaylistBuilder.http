@@ -1,0 +1,6 @@
+@OOPCollaborativePlaylistBuilder_HostAddress = http://localhost:5156
+
+GET {{OOPCollaborativePlaylistBuilder_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
