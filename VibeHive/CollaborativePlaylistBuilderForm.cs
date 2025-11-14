@@ -216,7 +216,7 @@ namespace VibeHive
                     string json = await response.Content.ReadAsStringAsync();
                     var users = JsonConvert.DeserializeObject<List<UserDto>>(json);
 
-                    listBox_users.DataSource = users.Select(u => new { Display = $"{u.id} - {u.name}", Value = u.id })
+                    listBox_users.DataSource = users.Select(u => new { Display = $"User -- Id: {u.id} - Name: {u.name}", Value = u.id })
                     .ToList();
                     listBox_users.DisplayMember = "Display";
                     listBox_users.ValueMember = "Value";
@@ -244,7 +244,7 @@ namespace VibeHive
 
                     listBox_Playlists.DataSource = playlists.Select(p => new
                     {
-                        Display = $"{p.Id} - {p.Name} - {p.CreatedBy} - {p.isCollaborative}",
+                        Display = $"Playlist -- Id: {p.Id} - Name: {p.Name} - Created By: {p.CreatedBy} - isCollaborative: {p.isCollaborative}",
                         Value = p.Id,
                         CreatorId = p.CreatedBy
                     })
@@ -275,7 +275,7 @@ namespace VibeHive
 
                     listBox_PlaylistSongs.DataSource = playlistSongs.Select(s => new
                     {
-                        Display = $"{s.Id} - {s.Title} - {s.Artist} - {s.Genre} - {s.Duration} - {s.Votes}",
+                        Display = $"Song -- Id: {s.Id} - Title: {s.Title} - Artist: {s.Artist} - Genre: {s.Genre} - Duration: {s.Duration} - Votes: {s.Votes}",
                         Value = s.Id,
                         Vote = s.Votes
                     })
