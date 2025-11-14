@@ -76,6 +76,8 @@
             label24 = new Label();
             numericUpDown_songMinutes = new NumericUpDown();
             numericUpDown_songSeconds = new NumericUpDown();
+            label_songUpdateStatus = new Label();
+            label25 = new Label();
             ((System.ComponentModel.ISupportInitialize)numericUpDown_songMinutes).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown_songSeconds).BeginInit();
             SuspendLayout();
@@ -87,7 +89,7 @@
             listBox_Playlists.Name = "listBox_Playlists";
             listBox_Playlists.Size = new Size(599, 204);
             listBox_Playlists.TabIndex = 4;
-            listBox_Playlists.SelectedIndexChanged += this.listBox_Playlists_SelectedIndexChanged;
+            listBox_Playlists.SelectedIndexChanged += listBox_Playlists_SelectedIndexChanged;
             // 
             // listBox_users
             // 
@@ -96,7 +98,7 @@
             listBox_users.Name = "listBox_users";
             listBox_users.Size = new Size(272, 204);
             listBox_users.TabIndex = 5;
-            listBox_users.SelectedIndexChanged += this.listBox_users_SelectedIndexChanged;
+            listBox_users.SelectedIndexChanged += listBox_users_SelectedIndexChanged;
             // 
             // listBox_PlaylistSongs
             // 
@@ -105,7 +107,7 @@
             listBox_PlaylistSongs.Name = "listBox_PlaylistSongs";
             listBox_PlaylistSongs.Size = new Size(646, 204);
             listBox_PlaylistSongs.TabIndex = 6;
-            listBox_PlaylistSongs.SelectedIndexChanged += this.listBox_PlaylistSongs_SelectedIndexChanged;
+            listBox_PlaylistSongs.SelectedIndexChanged += listBox_PlaylistSongs_SelectedIndexChanged;
             // 
             // button_createPlaylist
             // 
@@ -496,11 +498,31 @@
             numericUpDown_songSeconds.Size = new Size(74, 27);
             numericUpDown_songSeconds.TabIndex = 64;
             // 
+            // label_songUpdateStatus
+            // 
+            label_songUpdateStatus.AutoSize = true;
+            label_songUpdateStatus.Location = new Point(1344, 45);
+            label_songUpdateStatus.Name = "label_songUpdateStatus";
+            label_songUpdateStatus.Size = new Size(238, 20);
+            label_songUpdateStatus.TabIndex = 65;
+            label_songUpdateStatus.Text = "Select a playlist with songs to view";
+            // 
+            // label25
+            // 
+            label25.AutoSize = true;
+            label25.Location = new Point(601, 286);
+            label25.Name = "label25";
+            label25.Size = new Size(360, 20);
+            label25.TabIndex = 66;
+            label25.Text = "Select the corresponding line in each box to fill in Ids";
+            // 
             // CollaborativePlaylistBuilderForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1605, 610);
+            Controls.Add(label25);
+            Controls.Add(label_songUpdateStatus);
             Controls.Add(numericUpDown_songSeconds);
             Controls.Add(numericUpDown_songMinutes);
             Controls.Add(label24);
@@ -608,5 +630,7 @@
         private Label label24;
         private NumericUpDown numericUpDown_songMinutes;
         private NumericUpDown numericUpDown_songSeconds;
+        private Label label_songUpdateStatus;
+        private Label label25;
     }
 }
