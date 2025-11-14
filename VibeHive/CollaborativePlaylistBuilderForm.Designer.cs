@@ -87,7 +87,7 @@
             listBox_Playlists.Name = "listBox_Playlists";
             listBox_Playlists.Size = new Size(599, 204);
             listBox_Playlists.TabIndex = 4;
-            listBox_Playlists.SelectedIndexChanged += listBox_Playlists_SelectedIndexChanged;
+            listBox_Playlists.SelectedIndexChanged += this.listBox_Playlists_SelectedIndexChanged;
             // 
             // listBox_users
             // 
@@ -96,7 +96,7 @@
             listBox_users.Name = "listBox_users";
             listBox_users.Size = new Size(272, 204);
             listBox_users.TabIndex = 5;
-            listBox_users.SelectedIndexChanged += listBox_users_SelectedIndexChanged;
+            listBox_users.SelectedIndexChanged += this.listBox_users_SelectedIndexChanged;
             // 
             // listBox_PlaylistSongs
             // 
@@ -105,6 +105,7 @@
             listBox_PlaylistSongs.Name = "listBox_PlaylistSongs";
             listBox_PlaylistSongs.Size = new Size(646, 204);
             listBox_PlaylistSongs.TabIndex = 6;
+            listBox_PlaylistSongs.SelectedIndexChanged += this.listBox_PlaylistSongs_SelectedIndexChanged;
             // 
             // button_createPlaylist
             // 

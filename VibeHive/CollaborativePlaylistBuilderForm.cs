@@ -146,12 +146,10 @@ namespace VibeHive
                 var playlistId = textBox_playlistId_songVote.Text;
 
                 dynamic item = listBox_PlaylistSongs.SelectedItem;
-                int currentVotes = item.Votes.Count;
 
                 var songVote = new
                 {
-                    songId = item.SongId,
-                    playlistId = playlistId,
+                    songId = item.Value,
                     vote = newVote
                 };
 
@@ -161,12 +159,12 @@ namespace VibeHive
                 HttpResponseMessage response = await _httpClient.PostAsync($"{apiBaseUrl}/playlist/{playlistId}/vote", content);
                 if (response.IsSuccessStatusCode)
                 {
-                    MessageBox.Show($"New song was added to the playlist successfully.");
+                    MessageBox.Show($"The vote was successfully counted towards the song.");
                     LoadPlaylistSongsAsync(playlistId);
                 }
                 else
                 {
-                    MessageBox.Show($"Failed to add the new song: {response.StatusCode}");
+                    MessageBox.Show($"Failed to add your vote to the song: {response.StatusCode}");
                 }
             }
             catch (Exception ex)
@@ -246,7 +244,8 @@ namespace VibeHive
                     listBox_PlaylistSongs.DataSource = playlistSongs.Select(s => new
                     {
                         Display = $"{s.Id} - {s.Title} - {s.Artist} - {s.Genre} - {s.Duration} - {s.Votes}",
-                        Value = s.Id
+                        Value = s.Id,
+                        Vote = s.Votes
                     })
                     .ToList();
                     listBox_PlaylistSongs.DisplayMember = "Display";
@@ -294,7 +293,7 @@ namespace VibeHive
         private void listBox_PlaylistSongs_SelectedIndexChanged(object sender, EventArgs e)
         {
             dynamic item = listBox_PlaylistSongs.SelectedItem;
-            textBox_songId_songVote.Text = item.SongId.ToString();
+            textBox_songId_songVote.Text = item.Value.ToString();
         }
     }
 }
