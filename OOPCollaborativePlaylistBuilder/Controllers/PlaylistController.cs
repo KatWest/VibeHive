@@ -50,16 +50,16 @@ namespace OOPCollaborativePlaylistBuilder.Controllers
 
         //POST /api/playlists/{id}/vote: Vote on a song within a collaborative playlist.
         [HttpPost("{playlistId}/vote")]
-        public ActionResult<Song> VoteOnSong(string songId, string playlistId, bool vote)
+        public ActionResult<Song> VoteOnSong([FromRoute] string playlistId, [FromBody] SongVoteApiRequest newSongVote)
         {
-            var songVote = new VoteForSongCommand(songId, playlistId, vote);
+            var songVote = new VoteForSongCommand(newSongVote.songId, playlistId, newSongVote.vote);
             songVote.Execute();
 
             Song updatedSong = songVote.UpdatedSong;
 
             if (updatedSong == null)
             {
-                throw new Exception(message: $"The playlist with Id: {playlistId} could not update the song with Id: {songId}");
+                throw new Exception(message: $"The playlist with Id: {playlistId} could not update the song with Id: {newSongVote.songId}");
             }
             return Ok(updatedSong);
         }

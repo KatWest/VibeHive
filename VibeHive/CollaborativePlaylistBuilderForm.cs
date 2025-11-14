@@ -132,9 +132,47 @@ namespace VibeHive
             }
         }
 
-        private void button_Vote_Click(object sender, EventArgs e)
+        private async void button_Vote_Click(object sender, EventArgs e)
         {
+            try
+            {
+                bool newVote = false; //Default false
+                //if upvote selected the update to true to upvote
+                if(radioButton_Up.Checked) 
+                {
+                    newVote = true;
+                }
 
+                var playlistId = textBox_playlistId_songVote.Text;
+
+                dynamic item = listBox_PlaylistSongs.SelectedItem;
+                int currentVotes = item.Votes.Count;
+
+                var songVote = new
+                {
+                    songId = item.SongId,
+                    playlistId = playlistId,
+                    vote = newVote
+                };
+
+                var json = JsonConvert.SerializeObject(songVote);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+                HttpResponseMessage response = await _httpClient.PostAsync($"{apiBaseUrl}/playlist/{playlistId}/vote", content);
+                if (response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show($"New song was added to the playlist successfully.");
+                    LoadPlaylistSongsAsync(playlistId);
+                }
+                else
+                {
+                    MessageBox.Show($"Failed to add the new song: {response.StatusCode}");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+            }
         }
 
         private async Task LoadUsersAsync()
@@ -173,10 +211,11 @@ namespace VibeHive
                     string json = await response.Content.ReadAsStringAsync();
                     var playlists = JsonConvert.DeserializeObject<List<PlaylistDto>>(json);
 
-                    listBox_Playlists.DataSource = playlists.Select(p => new { 
-                        Display = $"{p.Id} - {p.Name} - {p.CreatedBy} - {p.isCollaborative}", 
-                        Value = p.Id, 
-                        CreatorId = p.CreatedBy 
+                    listBox_Playlists.DataSource = playlists.Select(p => new
+                    {
+                        Display = $"{p.Id} - {p.Name} - {p.CreatedBy} - {p.isCollaborative}",
+                        Value = p.Id,
+                        CreatorId = p.CreatedBy
                     })
                     .ToList();
                     listBox_Playlists.DisplayMember = "Display";
@@ -204,9 +243,10 @@ namespace VibeHive
                     string json = await response.Content.ReadAsStringAsync();
                     var playlistSongs = JsonConvert.DeserializeObject<List<SongDto>>(json);
 
-                    listBox_PlaylistSongs.DataSource = playlistSongs.Select(s => new { 
-                        Display = $"{s.Id} - {s.Title} - {s.Artist} - {s.Genre} - {s.Duration} - {s.Votes}", 
-                        Value = s.Id 
+                    listBox_PlaylistSongs.DataSource = playlistSongs.Select(s => new
+                    {
+                        Display = $"{s.Id} - {s.Title} - {s.Artist} - {s.Genre} - {s.Duration} - {s.Votes}",
+                        Value = s.Id
                     })
                     .ToList();
                     listBox_PlaylistSongs.DisplayMember = "Display";
@@ -234,14 +274,27 @@ namespace VibeHive
         private void listBox_Playlists_SelectedIndexChanged(object sender, EventArgs e)
         {
             dynamic item = listBox_Playlists.SelectedItem;
+            if(item == null)
+            {
+                return;
+            }
+
             //populate add collab section
             textBox_creatorId.Text = item.CreatorId.ToString();
             textBox_playlistId_addCollab.Text = item.Value.ToString();
             //populate add song section
             textBox_playlistID_addSong.Text = item.Value.ToString();
+            //populate song voting - playlistId
+            textBox_playlistId_songVote.Text = item.Value.ToString();
 
             //populates playlists songs once clicked
-            LoadPlaylistSongsAsync( item.Value.ToString());
+            LoadPlaylistSongsAsync(item.Value.ToString());
+        }
+
+        private void listBox_PlaylistSongs_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            dynamic item = listBox_PlaylistSongs.SelectedItem;
+            textBox_songId_songVote.Text = item.SongId.ToString();
         }
     }
 }
